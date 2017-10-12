@@ -26,10 +26,18 @@ public class Atividade {
 	private String ritmo_maximo;
 	private Integer temperatura_ambiente;
 	private String clima;
+	private Integer elevacao;
+	
 		
 	
 	
 	
+	public Integer getElevacao() {
+		return elevacao;
+	}
+	public void setElevacao(Integer elevacao) {
+		this.elevacao = elevacao;
+	}
 	public String getHora_atividade() {
 		return hora_atividade;
 	}
@@ -166,7 +174,7 @@ public class Atividade {
 			String tipo_atividade, String data_atividade, String hora_atividade, String duracao, Float distancia,
 			Float velocidade_media, Float velocidade_maxima, Integer frequencia_cardiaca_media,
 			Integer frequencia_cardiaca_maxima, Integer frequencia_cardiaca_minima, Integer calorias,
-			String ritmo_medio, String ritmo_maximo, Integer temperatura_ambiente, String clima) {
+			String ritmo_medio, String ritmo_maximo, Integer temperatura_ambiente, String clima, Integer elevacao) {
 		super();
 		this.id_app = id_app;
 		this.nome_app = nome_app;
@@ -188,6 +196,7 @@ public class Atividade {
 		this.ritmo_maximo = ritmo_maximo;
 		this.temperatura_ambiente = temperatura_ambiente;
 		this.clima = clima;
+		this.elevacao = elevacao;
 	}
 		
 	

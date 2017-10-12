@@ -40,6 +40,10 @@ public class StravaService {
 		DecimalFormat df = new DecimalFormat("#.##");
 		velocidade_media = Float.parseFloat(df.format(velocidade_media).replace(",", "."));
 		
+		String elevacao2[] = document.getElementsByClass("elevation").first().getElementsByTag("strong").text().replace(".", "").split("m");
+		String elevacao = elevacao2[0].replace(".", "");
+		System.out.println(elevacao);
+		
 		System.out.println(velocidade_media);
 		
 		Strava strava = new Strava();
@@ -47,6 +51,7 @@ public class StravaService {
 		strava.setDuracao(duracao);
 		strava.setCalorias(calorias);
 		strava.setVelocidade_media(velocidade_media);
+		strava.setElevacao(elevacao);
 		
 		lista.add(strava);
 		

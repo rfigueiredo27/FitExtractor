@@ -23,7 +23,15 @@ public class Strava {
 	private String ritmo_maximo;
 	private String temperatura_ambiente;
 	private String clima;
+	private String elevacao;
 	
+	
+	public String getElevacao() {
+		return elevacao;
+	}
+	public void setElevacao(String elevacao) {
+		this.elevacao = elevacao;
+	}
 	public String getId_atividade() {
 		return id_atividade;
 	}

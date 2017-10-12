@@ -33,7 +33,7 @@ public class UrlDAO {
 		sql += "join post_fitness pf on c.id_post = pf.id_publicacao ";
 		sql += "join aplicativo a on pf.id_app = a.id_aplicativo ";
 		sql += "join pessoa p on pf.id_pessoa = p.id_usuario ";
-		sql += "where NOT EXISTS (SELECT * FROM atividades WHERE c.id_course = atividades.id_atividade_fitrank)";
+		//sql += "where NOT EXISTS (SELECT * FROM atividades WHERE c.id_course = atividades.id_atividade_fitrank)";
 
 
 
@@ -117,7 +117,8 @@ public class UrlDAO {
 		sql += "join post_fitness pf on c.id_post = pf.id_publicacao ";
 		sql += "join aplicativo a on pf.id_app = a.id_aplicativo ";
 		sql += "join pessoa p on pf.id_pessoa = p.id_usuario ";
-		sql += "where NOT EXISTS (SELECT * FROM atividades WHERE c.id_course = atividades.id_atividade_fitrank) AND a.id_aplicativo = ? ";
+		//sql += "where NOT EXISTS (SELECT * FROM atividades WHERE c.id_course = atividades.id_atividade_fitrank) AND a.id_aplicativo = ? ";
+		sql += "where a.id_aplicativo = ? ";
 
 		try {
 			stmt = conexao.prepareStatement(sql);

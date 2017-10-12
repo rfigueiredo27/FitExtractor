@@ -80,11 +80,13 @@ public class InsereStravaController extends HttpServlet {
 		Integer temp = 0;
 		String clima = " - ";
 		
+		Integer elevacao = Integer.parseInt(request.getParameter("elevacao"));
+		
 		Atividade atividade = new Atividade(id_app, nome_app, id_course, id_usu, nome_usu, 
 				modalidade, data, hora, duracao, 
 				distancia, vel_media, vel_max, 
 				freq_media, freq_max, freq_min, 
-				calorias, ritmo_medio, ritmo_max, temp, clima);
+				calorias, ritmo_medio, ritmo_max, temp, clima, elevacao);
 
 		AtividadeDao dao = new AtividadeDao();
 		

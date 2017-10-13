@@ -46,18 +46,6 @@ $(document)
 							}
 						},
 						
-						"order": [[ 0, "desc" ]],
-						
-						"columns": [
-							{ "type": "date-br" },
-				            null,
-				            null,
-				            null,
-				            null,
-				            null
-				            ]
-						
-						
 					}
 					
 			);

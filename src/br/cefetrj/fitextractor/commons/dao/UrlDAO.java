@@ -28,12 +28,13 @@ public class UrlDAO {
 		String sql = "";
 
 		sql += "select distinct p.id_usuario as nome_usu, p.nome as nome_usuario, a.id_aplicativo as id_app, a.nome as nome_app, "; 
-		sql += "c.id_course as id_atividade, pf.modalidade, pf.distancia_percorrida, convert((sec_to_time(pf.duracao * 3600 + 0)), char) as duracao, pf.data_publicacao, pf.url as url_atividade ";
+		sql += "c.id_course as id_atividade, pf.modalidade, pf.distancia_percorrida, convert((sec_to_time(pf.duracao * 3600 + 0)), char) as duracao, pf.data_publicacao, pf.url as url_atividade, (pf.distancia_percorrida/pf.duracao) as velocidade_media ";
 		sql += "from course c ";
 		sql += "join post_fitness pf on c.id_post = pf.id_publicacao ";
 		sql += "join aplicativo a on pf.id_app = a.id_aplicativo ";
 		sql += "join pessoa p on pf.id_pessoa = p.id_usuario ";
-		//sql += "where NOT EXISTS (SELECT * FROM atividades WHERE c.id_course = atividades.id_atividade_fitrank)";
+		sql += "where NOT EXISTS (SELECT * FROM atividades WHERE c.id_course = atividades.id_atividade_fitrank) ";
+		sql += "order by data_publicacao desc limit 1000";
 
 
 
@@ -66,6 +67,7 @@ public class UrlDAO {
 
 				url.setData_publicacao(rs.getString("data_publicacao"));
 				url.setUrl_atividade(rs.getString("url_atividade"));
+				url.setVelocidade_media(rs.getFloat("velocidade_media"));
 
 				lista_url.add(url);
 			}
@@ -112,13 +114,13 @@ public class UrlDAO {
 		String sql = "";
 
 		sql += "select distinct p.id_usuario as nome_usu, p.nome as nome_usuario, a.id_aplicativo as id_app, a.nome as nome_app, "; 
-		sql += "c.id_course as id_atividade, pf.modalidade, pf.distancia_percorrida, convert((sec_to_time(pf.duracao * 3600 + 0)), char) as duracao, pf.data_publicacao, pf.url as url_atividade ";
+		sql += "c.id_course as id_atividade, pf.modalidade, pf.distancia_percorrida, convert((sec_to_time(pf.duracao * 3600 + 0)), char) as duracao, pf.data_publicacao, pf.url as url_atividade, (pf.distancia_percorrida/pf.duracao) as velocidade_media ";
 		sql += "from course c ";
 		sql += "join post_fitness pf on c.id_post = pf.id_publicacao ";
 		sql += "join aplicativo a on pf.id_app = a.id_aplicativo ";
 		sql += "join pessoa p on pf.id_pessoa = p.id_usuario ";
-		//sql += "where NOT EXISTS (SELECT * FROM atividades WHERE c.id_course = atividades.id_atividade_fitrank) AND a.id_aplicativo = ? ";
-		sql += "where a.id_aplicativo = ? ";
+		sql += "where NOT EXISTS (SELECT * FROM atividades WHERE c.id_course = atividades.id_atividade_fitrank) AND a.id_aplicativo = ? ";
+		sql += "order by data_publicacao desc limit 100 ";
 
 		try {
 			stmt = conexao.prepareStatement(sql);
@@ -158,6 +160,8 @@ public class UrlDAO {
 				
 				
 				url.setUrl_atividade(rs.getString("url_atividade"));
+				
+				url.setVelocidade_media(rs.getFloat("velocidade_media"));
 
 				lista_url.add(url);
 			}

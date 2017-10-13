@@ -63,7 +63,7 @@ public class InsereStravaController extends HttpServlet {
 		Integer calorias = 0;
 		if(request.getParameter("calorias") != "")
 		{
-		calorias = Integer.parseInt(request.getParameter("calorias"));
+		calorias = Integer.parseInt(request.getParameter("calorias").replace(",", ""));
 		}
 		
 		String ritmo_medio = request.getParameter("ritmo_medio");
@@ -80,7 +80,8 @@ public class InsereStravaController extends HttpServlet {
 		Integer temp = 0;
 		String clima = " - ";
 		
-		Integer elevacao = Integer.parseInt(request.getParameter("elevacao"));
+		Integer elevacao = Integer.parseInt(request.getParameter("elevacao").replace(",", ""));
+		System.out.println(elevacao);
 		
 		Atividade atividade = new Atividade(id_app, nome_app, id_course, id_usu, nome_usu, 
 				modalidade, data, hora, duracao, 

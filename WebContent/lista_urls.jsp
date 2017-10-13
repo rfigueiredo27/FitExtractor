@@ -48,7 +48,6 @@
 
 						</tr>
 
-						</tr>
 					</thead>
 					<tbody>
 						<%int cont = 1; %>

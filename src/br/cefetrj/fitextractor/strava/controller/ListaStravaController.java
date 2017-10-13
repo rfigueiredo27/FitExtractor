@@ -34,9 +34,9 @@ public class ListaStravaController extends HttpServlet {
 	 */
 protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//String url = request.getParameter("url");
+		String url = request.getParameter("url");
 		
-		String url = "http://localhost:8081/FitExtractor/Strava.html";
+		//String url = "http://localhost:8081/FitExtractor/Strava.html";
 		
 		//Extrair os dados da Tabela de URL's
 		List<Strava> tabela = new ArrayList<Strava>();
@@ -47,6 +47,9 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
 		String id_atividade_fitrank = request.getParameter("id_atividade");
 		String tipo_atividade = request.getParameter("modalidade");
 		String data_atividade = request.getParameter("data");
+		String duracao = request.getParameter("duracao");
+		String distancia = request.getParameter("distancia");
+		Float velocidade_media = Float.parseFloat(request.getParameter("velocidade_media"));
 		
 		Strava pf = new Strava();
 		
@@ -57,6 +60,9 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
 		pf.setId_atividade_fitrank(id_atividade_fitrank);
 		pf.setTipo_atividade(tipo_atividade);
 		pf.setData_atividade(data_atividade);
+		pf.setDuracao(duracao);
+		pf.setDistancia(distancia);
+		pf.setVelocidade_media(velocidade_media);
 		
 		tabela.add(pf);
 

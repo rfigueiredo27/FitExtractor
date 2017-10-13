@@ -15,8 +15,8 @@ public class AtividadeDao {
 		
 		String sql = "insert into atividades(id_app, nome_app, id_atividade_fitrank, id_usuario, nome_usuario, modalidade, " +
 					"data_atividade, hora_atividade, duracao, distancia, velocidade_media, velocidade_maxima, frequencia_cardiaca_media, frequencia_cardiaca_maxima, " +
-					"frequencia_cardiaca_minima, calorias, ritmo_medio, ritmo_maximo, temperatura_ambiente, clima) " +
-					"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					"frequencia_cardiaca_minima, calorias, ritmo_medio, ritmo_maximo, temperatura_ambiente, clima, elevacao) " +
+					"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		try{
 			stmt = (PreparedStatement) conexao.prepareStatement(sql);
@@ -40,6 +40,7 @@ public class AtividadeDao {
 			stmt.setString(18, atividade.getRitmo_maximo());
 			stmt.setInt(19, atividade.getTemperatura_ambiente());
 			stmt.setString(20, atividade.getClima());
+			stmt.setInt(21, atividade.getElevacao());
 					
 			stmt.execute();
 			

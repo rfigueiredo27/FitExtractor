@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:import url="cabecalho.jsp" />
 
@@ -27,7 +27,7 @@
 	<br />
 	<br />
 	<br />
-	<h3 align="center">Extração de Dados</h3>
+	<h3 align="center">ExtraÃ§Ã£o de Dados</h3>
 	<div class="contact-section">
 	<div class="container">
 		<div class="row"><br>
@@ -35,14 +35,14 @@
 			<form class="form-horizontal" action="InsereStrava" method="POST">
 				<c:forEach items="${ tabela }" var="pf">
 										<div class="form-group">
-					<label class="control-label col-sm-4">Código do Usuario:</label>
+					<label class="control-label col-sm-4">CÃ³digo do Usuario:</label>
 					<div class="col-sm-8"> 
 						<input type="text" name="id_usu"	class="form-control"  value="${pf.id_usuario}">
 					</div>
 					</div>
 					
 					<div class="form-group">
-					<label class="control-label col-sm-4">Nome do Usuário:</label>
+					<label class="control-label col-sm-4">Nome do UsuÃ¡rio:</label>
 					<div class="col-sm-8"> 
 						<input type="text" name="nome_usu"	class="form-control "  value="${pf.nome_usuario}">
 					</div>
@@ -83,9 +83,6 @@
 					</div>
 					</div>
 					
-					</c:forEach>
-					<c:forEach items="${ strava }" var="pf">					
-					
 <!-- 					<div class="form-group"> -->
 <!-- 					<label class="control-label col-sm-4">Hora da Atividade:</label>  -->
 <!-- 					<div class="col-sm-8"> -->
@@ -101,28 +98,36 @@
 					</div>
 					
 					<div class="form-group">
-					<label class="control-label col-sm-4">Distância (Km):</label> 
+					<label class="control-label col-sm-4">DistÃ¢ncia (Km):</label> 
 					<div class="col-sm-8">
 						<input type="number" name="distancia"	class="form-control"  value="${pf.distancia}">
 					</div>
 					</div>
 					
+					<div class="form-group">
+					<label class="control-label col-sm-4">Velocidade MÃ©dia (Km/h):</label> 
+					<div class="col-sm-8">
+						<input type="number" name="vel_media"	class="form-control"  value="${pf.velocidade_media}">
+					</div>
+					</div>
+					</c:forEach>
+					<c:forEach items="${ strava }" var="pf">
 <!-- 					<div class="form-group"> -->
-<!-- 					<label class="control-label col-sm-4">Frequência Cardíaca (Média):</label>  -->
+<!-- 					<label class="control-label col-sm-4">FrequÃªncia CardÃ­aca (MÃ©dia):</label>  -->
 <!-- 					<div class="col-sm-8"> -->
 <%-- 						<input type="number" name="freq_media" class="form-control"  value="${pf.frequencia_cardiaca_media}"> --%>
 <!-- 					</div> -->
 <!-- 					</div> -->
 					
 <!-- 					<div class="form-group"> -->
-<!-- 					<label class="control-label col-sm-4">Frequência Cardíaca (Max):</label>  -->
+<!-- 					<label class="control-label col-sm-4">FrequÃªncia CardÃ­aca (Max):</label>  -->
 <!-- 					<div class="col-sm-8"> -->
 <%-- 						<input type="number" name="freq_max" class="form-control"  value="${pf.frequencia_cardiaca_maxima}"> --%>
 <!-- 					</div> -->
 <!-- 					</div> -->
 					
 <!-- 					<div class="form-group"> -->
-<!-- 					<label class="control-label col-sm-4">Frequência Cardíaca (Min):</label>  -->
+<!-- 					<label class="control-label col-sm-4">FrequÃªncia CardÃ­aca (Min):</label>  -->
 <!-- 					<div class="col-sm-8"> -->
 <%-- 						<input type="number" name="freq_min" class="form-control"  value="${pf.frequencia_cardiaca_minima}"> --%>
 <!-- 					</div> -->
@@ -131,7 +136,7 @@
 					<div class="form-group">
 					<label class="control-label col-sm-4">Calorias:</label> 
 					<div class="col-sm-8">
-						<input type="number" name="calorias" class="form-control"  value="${pf.calorias}">
+						<input type="text" name="calorias" class="form-control"  value="${pf.calorias}">
 					</div>
 					</div>
 					
@@ -143,16 +148,18 @@
 <!-- 					</div> -->
 					
 <!-- 					<div class="form-group"> -->
-<!-- 					<label class="control-label col-sm-4">Ritmo Máximo:</label>  -->
+<!-- 					<label class="control-label col-sm-4">Ritmo MÃ¡ximo:</label>  -->
 <!-- 					<div class="col-sm-8"> -->
 <%-- 						<input type="text" name="ritmo_max" class="form-control"  value="${pf.ritmo_maximo}"> --%>
 <!-- 					</div> -->
 <!-- 					</div> -->
 					
+					
+					
 					<div class="form-group">
-					<label class="control-label col-sm-4">Velocidade Média (Km/h):</label> 
+					<label class="control-label col-sm-4">ElevaÃ§Ã£o:</label> 
 					<div class="col-sm-8">
-						<input type="number" name="vel_media"	class="form-control"  value="${pf.velocidade_media}">
+						<input type="text" name="elevacao"	class="form-control"  value="${pf.elevacao}">
 					</div>
 					</div>
 					

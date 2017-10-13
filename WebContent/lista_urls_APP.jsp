@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:import url="cabecalho.jsp" />
 
@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Pontos Turísticos</title>
+<title>Pontos TurÃ­sticos</title>
 <link rel="stylesheet" type="text/css"
 	href="DataTable/css/jquery.dataTables.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
@@ -33,7 +33,7 @@
 
 	<div class="container">
 		<div class="row">
-			<h3>Lista de Atividades a serem extraídas</h3>
+			<h3>Lista de Atividades a serem extraÃ­das</h3>
 
 			<br>
 			
@@ -43,11 +43,11 @@
 					<thead>
 						<tr>
 							<th>Data</th>
-							<th>Nome Usuário</th>
+							<th>Nome UsuÃ¡rio</th>
 							<th>NOME_APP</th>
 							<th>Modalidade</th>
 							<th>URL</th>
-							<th>AÇÃO</th>
+							<th>AÃ‡ÃƒO</th>
 
 						</tr>
 					</thead>
@@ -62,7 +62,7 @@
 								<td align="center"><a class='btn btn-primary' href="${urls.url_atividade}" target="_blank">Link </a></td>	
 								<td align="center"><a class='btn btn-success' href="ListaPolar?url=${urls.url_atividade }&nome=${urls.nome_usuario }&id_usu=${urls.id_usuario}
 								&id_app=${urls.id_app}&nome_app=${urls.nome_app}&modalidade=${urls.modalidade}&id_atividade=${urls.id_atividade}
-								&distancia=${urls.distancia_percorrida}&duracao=${urls.duracao}&data=${urls.data_publicacao}">Extração</a></td>
+								&distancia=${urls.distancia_percorrida}&duracao=${urls.duracao}&data=${urls.data_publicacao}">ExtraÃ§Ã£o</a></td>
 							</tr>
 							<% cont++; %>
 						</c:forEach>

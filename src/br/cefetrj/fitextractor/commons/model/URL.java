@@ -15,7 +15,16 @@ public class URL {
 	private String duracao;
 	private String data_publicacao;
 	private String url_atividade;
+	private Float velocidade_media;
+	
+	
 
+	public Float getVelocidade_media() {
+		return velocidade_media;
+	}
+	public void setVelocidade_media(Float velocidade_media) {
+		this.velocidade_media = velocidade_media;
+	}
 	public String getDuracao() {
 		return duracao;
 	}

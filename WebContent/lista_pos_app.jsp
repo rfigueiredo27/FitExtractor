@@ -47,7 +47,7 @@
 							<th>NOME_APP</th>
 							<th>Modalidade</th>
 							<th>URL</th>
-							<th>AÇÃO</th>
+							<th></th>
 
 						</tr>
 					</thead>
@@ -62,7 +62,7 @@
 								<td align="center"><a class='btn btn-primary' href="${urls.url_atividade}" target="_blank">Link </a></td>	
 								<td align="center"><a class='btn btn-success' href="ListaPolar?url=${urls.url_atividade }&nome=${urls.nome_usuario }&id_usu=${urls.id_usuario}
 								&id_app=${urls.id_app}&nome_app=${urls.nome_app}&modalidade=${urls.modalidade}&id_atividade=${urls.id_atividade}
-								&distancia=${urls.distancia_percorrida}&duracao=${urls.duracao}&data=${urls.data_publicacao}">Extração</a></td>
+								&distancia=${urls.distancia_percorrida}&duracao=${urls.duracao}&data=${urls.data_publicacao}">Detalhes</a></td>
 							</tr>
 							<% cont++; %>
 						</c:forEach>

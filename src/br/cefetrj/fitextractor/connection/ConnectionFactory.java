@@ -1,4 +1,4 @@
-package br.cefetrj.fitextractor.commons.connection;
+package br.cefetrj.fitextractor.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

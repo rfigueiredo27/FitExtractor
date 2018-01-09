@@ -1,4 +1,4 @@
-package br.cefetrj.fitextractor.commons.dao;
+package br.cefetrj.fitextractor.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import br.cefetrj.fitextractor.commons.connection.ConnectionFactory;
-import br.cefetrj.fitextractor.commons.model.URL;
+import br.cefetrj.fitextractor.connection.ConnectionFactory;
+import br.cefetrj.fitextractor.model.URL;
 
 public class UrlDAO {
 
@@ -204,7 +204,7 @@ public class UrlDAO {
 
 		//String = "SELECT * FROM lista_url where usuario like 'JR%' ";
 
-		String sql = "select * from bd_ativ_pos";
+		String sql = "select * from atividades";
 
 		try{
 			stmt = (PreparedStatement) conexao.prepareStatement(sql);			
@@ -224,12 +224,12 @@ public class UrlDAO {
 				url.setDuracao(rs.getString("duracao"));
 				url.setVelocidade_media(rs.getFloat("velocidade_media"));
 				url.setRitmo_medio(rs.getString("ritmo_medio"));
-				url.setCalorias(rs.getInt("caloria_aproximada"));
-				url.setData_publicacao(rs.getString("data_publicacao"));
+				url.setCalorias(rs.getInt("calorias"));
+				url.setData_publicacao(rs.getString("data_atividade"));
 				url.setHorario(rs.getString("horario"));
 				url.setId_periodo(rs.getInt("id_periodo"));
 				url.setDesc_periodo(rs.getString("desc_periodo"));
-				url.setUrl_atividade(rs.getString("url_atividade"));
+				url.setUrl_atividade(rs.getString("url"));
 				
 				lista_url.add(url);
 			}

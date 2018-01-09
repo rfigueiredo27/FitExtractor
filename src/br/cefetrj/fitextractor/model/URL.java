@@ -1,4 +1,4 @@
-package br.cefetrj.fitextractor.commons.model;
+package br.cefetrj.fitextractor.model;
 
 import java.sql.Timestamp;
 import java.util.Calendar;

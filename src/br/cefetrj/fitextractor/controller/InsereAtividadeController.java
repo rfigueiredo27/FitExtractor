@@ -1,4 +1,4 @@
-package br.cefetrj.fitextractor.commons.controller;
+package br.cefetrj.fitextractor.controller;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.cefetrj.fitextractor.commons.dao.AtividadeDao;
-import br.cefetrj.fitextractor.commons.model.Atividade;
+import br.cefetrj.fitextractor.dao.AtividadeDao;
+import br.cefetrj.fitextractor.model.Atividade;
 
 /**
  * Servlet implementation class InsereAtividade

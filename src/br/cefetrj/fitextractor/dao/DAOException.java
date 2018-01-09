@@ -1,4 +1,4 @@
-package br.cefetrj.fitextractor.commons.dao;
+package br.cefetrj.fitextractor.dao;
 
 public class DAOException extends RuntimeException{
 	

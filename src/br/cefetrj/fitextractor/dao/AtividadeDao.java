@@ -1,11 +1,11 @@
-package br.cefetrj.fitextractor.commons.dao;
+package br.cefetrj.fitextractor.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import br.cefetrj.fitextractor.commons.connection.ConnectionFactory;
-import br.cefetrj.fitextractor.commons.model.Atividade;
+import br.cefetrj.fitextractor.connection.ConnectionFactory;
+import br.cefetrj.fitextractor.model.Atividade;
 
 public class AtividadeDao {
 	

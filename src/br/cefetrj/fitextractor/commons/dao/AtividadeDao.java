@@ -9,6 +9,45 @@ import br.cefetrj.fitextractor.commons.model.Atividade;
 
 public class AtividadeDao {
 	
+	public void insereTudo() throws DAOException{
+		Connection conexao = new ConnectionFactory().getConnection();
+		PreparedStatement stmt = null;
+		
+		String sql = "INSERT INTO atividades (id_usuario,nome_usuario, id_app, nome_app, id_atividade_fitrank, " + 
+						"modalidade, desc_atividade, duracao_decimal, distancia, duracao, velocidade_media, " +
+						"ritmo_medio, calorias, data_atividade, horario, id_periodo, desc_periodo, url " +
+						") " +
+						"SELECT id_usuario,nome_usuario, id_app, nome_app, id_atividade, " + 
+						"modalidade, desc_atividade, duracao_decimal, distancia, duracao, velocidade_media, " +
+						"ritmo_medio, caloria_aproximada, data_publicacao, horario, id_periodo, desc_periodo, url_atividade " +
+						"FROM bd_atividades order by data_publicacao ";
+		
+		try{
+			stmt = (PreparedStatement) conexao.prepareStatement(sql);
+			stmt.execute();
+			
+			
+		}catch(SQLException e){
+			throw new DAOException("Ocorreu um erro no Sistema", e);
+		}finally{
+			try{
+				if(stmt!= null){
+					stmt.close();
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(conexao!=null){
+						conexao.close();
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}														
+	}//fim insereUsuario
+	
 	public void insereAtividade(Atividade atividade) throws DAOException{
 		Connection conexao = new ConnectionFactory().getConnection();
 		PreparedStatement stmt = null;

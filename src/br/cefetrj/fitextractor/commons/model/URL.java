@@ -13,12 +13,61 @@ public class URL {
 	private String modalidade;
 	private Float distancia_percorrida;
 	private String duracao;
+	private Float duracao_decimal;
 	private String data_publicacao;
 	private String url_atividade;
 	private Float velocidade_media;
+	private String desc_atividade;
+	private String ritmo_medio;
+	private int calorias;
+	private String horario;
+	private int id_periodo;
+	private String desc_periodo;
 	
 	
 
+	public Float getDuracao_decimal() {
+		return duracao_decimal;
+	}
+	public void setDuracao_decimal(Float duracao_decimal) {
+		this.duracao_decimal = duracao_decimal;
+	}
+	public String getDesc_atividade() {
+		return desc_atividade;
+	}
+	public void setDesc_atividade(String desc_atividade) {
+		this.desc_atividade = desc_atividade;
+	}
+	public String getRitmo_medio() {
+		return ritmo_medio;
+	}
+	public void setRitmo_medio(String ritmo_medio) {
+		this.ritmo_medio = ritmo_medio;
+	}
+	public int getCalorias() {
+		return calorias;
+	}
+	public void setCalorias(int calorias) {
+		this.calorias = calorias;
+	}
+	public String getHorario() {
+		return horario;
+	}
+	public void setHorario(String horario) {
+		this.horario = horario;
+	}
+	public int getId_periodo() {
+		return id_periodo;
+	}
+	public void setId_periodo(int id_periodo) {
+		this.id_periodo = id_periodo;
+	}
+	public String getDesc_periodo() {
+		return desc_periodo;
+	}
+	public void setDesc_periodo(String desc_periodo) {
+		this.desc_periodo = desc_periodo;
+	}
 	public Float getVelocidade_media() {
 		return velocidade_media;
 	}

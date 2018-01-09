@@ -12,7 +12,7 @@ import br.cefetrj.fitextractor.commons.dao.AtividadeDao;
 import br.cefetrj.fitextractor.commons.model.Atividade;
 
 /**
- * Servlet implementation class InsereUsuario
+ * Servlet implementation class InsereAtividade
  */
 
 @WebServlet(name = "InsereAtividade", urlPatterns = { "/InsereAtividade" })

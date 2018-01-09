@@ -13,7 +13,7 @@
 	<div class="container">
 		<div class="text-center">
 			<p>
-				&copy;2017 - FitExtractor. <br> Desenvolvido
+				&copy;2017 - FitExtractor (Beta). <br> Desenvolvido
 				por <a class="scroll" href="#home">Renan Figueiredo</a>
 			</p>
 		</div>

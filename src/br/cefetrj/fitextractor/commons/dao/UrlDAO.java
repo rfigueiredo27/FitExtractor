@@ -196,5 +196,145 @@ public class UrlDAO {
 		}return (lista_url);
 	}// fim getListaUsuarios
 
+	public List<URL> getAtivPos() throws DAOException{
+		Connection conexao = new ConnectionFactory().getConnection();
+		List<URL> lista_url = new ArrayList<URL>();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		//String = "SELECT * FROM lista_url where usuario like 'JR%' ";
+
+		String sql = "select * from bd_ativ_pos";
+
+		try{
+			stmt = (PreparedStatement) conexao.prepareStatement(sql);			
+			rs = stmt.executeQuery();
+
+			while(rs.next()){
+				URL url = new URL();
+				
+				url.setId_usuario(rs.getLong("id_usuario"));
+				url.setNome_usuario(rs.getString("nome_usuario"));
+				url.setId_app(rs.getLong("id_app"));
+				url.setNome_app(rs.getString("nome_app"));
+				url.setId_atividade(rs.getLong("id_atividade"));
+				url.setModalidade(rs.getString("modalidade"));
+				url.setDesc_atividade(rs.getString("desc_atividade"));
+				url.setDuracao_decimal(rs.getFloat("duracao_decimal"));
+				url.setDuracao(rs.getString("duracao"));
+				url.setVelocidade_media(rs.getFloat("velocidade_media"));
+				url.setRitmo_medio(rs.getString("ritmo_medio"));
+				url.setCalorias(rs.getInt("caloria_aproximada"));
+				url.setData_publicacao(rs.getString("data_publicacao"));
+				url.setHorario(rs.getString("horario"));
+				url.setId_periodo(rs.getInt("id_periodo"));
+				url.setDesc_periodo(rs.getString("desc_periodo"));
+				url.setUrl_atividade(rs.getString("url_atividade"));
+				
+				lista_url.add(url);
+			}
+
+		}catch(SQLException e){
+			throw new DAOException("Ocorreu um erro no Sistema", e);
+		}finally{
+			try{
+				if(rs!=null){
+					rs.close();
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(stmt!=null){
+						stmt.close();
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}finally{
+					try{
+						if(conexao!=null){
+							conexao.close();
+						}
+					}catch(SQLException e){
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+
+		return (lista_url);
+	} // fim getListaUsuarios
+
+
+	public List<URL> getAtivPosApp(String app) throws DAOException{
+		Connection conexao = new ConnectionFactory().getConnection();
+		List<URL> lista_url = new ArrayList<URL>();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from bd_ativ_pos where id_app = ? ";
+
+		try{
+			stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, app);
+			rs = stmt.executeQuery();
+
+			while(rs.next()){
+				URL url = new URL();
+				
+				url.setId_usuario(rs.getLong("id_usuario"));
+				url.setNome_usuario(rs.getString("nome_usuario"));
+				url.setId_app(rs.getLong("id_app"));
+				url.setNome_app(rs.getString("nome_app"));
+				url.setId_atividade(rs.getLong("id_atividade"));
+				url.setModalidade(rs.getString("modalidade"));
+				url.setDesc_atividade(rs.getString("desc_atividade"));
+				url.setDuracao_decimal(rs.getFloat("duracao_decimal"));
+				url.setDuracao(rs.getString("duracao").substring(0, 8));
+				url.setVelocidade_media(rs.getFloat("velocidade_media"));
+				url.setRitmo_medio(rs.getString("ritmo_medio"));
+				url.setCalorias(rs.getInt("caloria_aproximada"));
+				url.setData_publicacao(rs.getString("data_publicacao"));
+				url.setHorario(rs.getString("horario"));
+				url.setId_periodo(rs.getInt("id_periodo"));
+				url.setDesc_periodo(rs.getString("desc_periodo"));
+				url.setUrl_atividade(rs.getString("url_atividade"));
+				
+				lista_url.add(url);
+			}
+
+		}catch(SQLException e){
+			throw new DAOException("Ocorreu um erro no Sistema", e);
+		}finally{
+			try{
+				if(rs!=null){
+					rs.close();
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(stmt!=null){
+						stmt.close();
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}finally{
+					try{
+						if(conexao!=null){
+							conexao.close();
+						}
+					}catch(SQLException e){
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+
+		return (lista_url);
+	} // fim getListaUsuarios
+
 }
 

@@ -50,7 +50,7 @@
 
 					</thead>
 					<tbody>
-						<%int cont = 1; %>
+						<%int cont = 0; %>
 						<c:forEach items="${ urls }" var="urls">
 							<tr>
 								<td>${urls.data_publicacao}</td>

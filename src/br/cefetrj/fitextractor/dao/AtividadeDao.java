@@ -82,8 +82,7 @@ public class AtividadeDao {
 			stmt.setInt(21, atividade.getElevacao());
 					
 			stmt.execute();
-			
-			
+	
 		}catch(SQLException e){
 			throw new DAOException("Ocorreu um erro no Sistema", e);
 		}finally{

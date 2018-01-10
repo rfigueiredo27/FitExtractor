@@ -43,7 +43,6 @@
 							<th>Nome Usuário</th>
 							<th>NOME_APP</th>
 							<th>Modalidade</th>
-							<th>URL</th>
 							<th>AÇÃO</th>
 
 						</tr>
@@ -56,8 +55,7 @@
 								<td>${urls.data_publicacao}</td>
 								<td>${urls.nome_usuario}</td>
 								<td>${urls.nome_app}</td>
-								<td>${urls.modalidade}</td>
-								<td><a class='btn btn-primary' href="${urls.url_atividade}" target="_blank">Link </a></td>	
+								<td>${urls.modalidade}</td>	
 								<td><a class='btn btn-success' href="ListaPolar?url=${urls.url_atividade }&nome=${urls.nome_usuario }&id_usu=${urls.id_usuario}
 								&id_app=${urls.id_app}&nome_app=${urls.nome_app}&modalidade=${urls.modalidade}&id_atividade=${urls.id_atividade}
 								&data=${urls.data_publicacao}">Extração</a></td>

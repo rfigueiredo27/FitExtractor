@@ -23,9 +23,23 @@ public class URL {
 	private String horario;
 	private int id_periodo;
 	private String desc_periodo;
+	private Long total_atividades;
+	private String ultima_data;
 	
 	
 
+	public String getUltima_data() {
+		return ultima_data;
+	}
+	public void setUltima_data(String ultima_data) {
+		this.ultima_data = ultima_data;
+	}
+	public Long getTotal_atividades() {
+		return total_atividades;
+	}
+	public void setTotal_atividades(Long total_atividades) {
+		this.total_atividades = total_atividades;
+	}
 	public Float getDuracao_decimal() {
 		return duracao_decimal;
 	}

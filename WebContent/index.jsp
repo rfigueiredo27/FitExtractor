@@ -26,8 +26,7 @@ color: black;
 }
 </style>
 </head>
-<body>
-	
+<body>	
 	<div class="container">
 		<div class="row">
 			<div align="center">
@@ -42,51 +41,53 @@ color: black;
 					<h1 class="center">
 						<a class="btn btn-success btn-lg" href="insereTudo"><h1 style="color: white;">iniciar processo</h1></a>
 					</h1>
-					<h4>Total de Dados Extraídos:</h4>
-					<h4>Data e Hora da última Extração:</h4>
+					<h4>Total de Dados Extraídos:
+						<jsp:useBean id="total"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
+						<c:set var="items" value="${total.getTotal()}" />
+						<c:forEach var="lista" items="${items}"><strong>${lista.total_atividades}</strong></c:forEach>
+					</h4>		
+					<h4>Data e Hora da última Extração:
+						<jsp:useBean id="ultima"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
+						<c:set var="items" value="${ultima.getUltimaData()}" />
+						<c:forEach var="lista" items="${items}"><strong>${lista.ultima_data}</strong></c:forEach>
+					</h4>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<h1 align="center" style="color: black; font-weight: 400;">Lista de Atividades extraídas por APP</h1>
+				<div class="text-center">
+					<jsp:useBean id="app"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
+						<c:set var="items" value="${app.getApps()}" />
+						<c:forEach var="lista" items="${items}">
+						<strong>${lista.ultima_data}</strong>
+							<a class="btn btn-default active" href="ListaPosApp?app=${lista.id_app}">${lista.nome_app}</a>
+						</c:forEach>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<h1 align="center" style="color: black; font-weight: 400;">Estatísticas Gerais</h1>
+				<div class="text-center carousel-inner center-block">
+					<h1 class="center">
+							<a class="btn btn-primary btn-lg" href="estatisticas.jsp"><h1 style="color: white;">Acessar dados</h1></a>
+					</h1>
 				</div>
 			</div>
 			
 			<div class="col-sm-6">
-				<h1 align="center" style="color: black; font-weight: 400;">Pós
-					Extração</h1>
+				<h1 align="center" style="color: black; font-weight: 400;">Análise de Desempenho</h1>
+				
 				<div class="text-center carousel-inner center-block">
-
-<!-- 					<h3 class="center"> -->
-<!-- 						<a class="a2" href="ListaPos">Listar Todos</a> -->
-<!-- 					</h3> -->
-<!-- 					<h3 class="center"> -->
-<!-- 						<font color="black"> Lista de Atividades extraídas por APP </font> -->
-<!-- 					</h3> -->
-						<a class="btn btn-primary" href="ListaPosApp?app=162918433202">Runtastic</a>
-
-						<a class="btn btn-warning" href="ListaPosApp?app=84697719333">Nike</a>
-
-						<a class="btn btn-success" href="ListaPosApp?app=1571997839755230">Polar Flow</a>
-
-						<a class="btn btn-info" href="ListaPosApp?app=284597785309">Strava</a>
-
-						<a class="btn btn-warning" href="ListaPosApp?app=62572192129">RunKeeper</a>
-
-						<a class="btn btn-danger" href="ListaPosApp?app=34785190853">MapMyWalk</a>
-
-						<a class="btn btn-primary" href="ListaPosApp?app=202423869273">Endomondo
-							Sports Tracker</a>
-
-						<a class="btn btn-success" href="ListaPosApp?app=44829295357">MapMyFitness</a>
-
-						<a class="btn btn-danger" href="ListaPosApp?app=43211574282">MapMyRun</a>
-
-						<a class="btn btn-info" href="ListaPosApp?app=43656497834">MapMyRide</a>
-
+					<h1 class="center">
+							<a class="btn btn-danger btn-lg" href="desempenho.jsp"><h1 style="color: white;">Acessar página</h1></a>
+					</h1>
 				</div>
+				
 			</div>
 		</div>
 	</div>
-
-
 	<c:import url="rodape.jsp" />
-
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.parallax.js"></script>

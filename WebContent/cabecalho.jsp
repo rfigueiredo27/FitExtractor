@@ -41,15 +41,12 @@
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="scroll"><a href="index.jsp">Home</a></li>
-						<li class="scroll"><a href="ListarUsuarios">URL</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
 	</header>
-
-
 
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>

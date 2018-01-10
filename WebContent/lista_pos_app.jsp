@@ -15,22 +15,14 @@
 	src="DataTable/js/jquery.js"></script>
 <script type="text/javascript" language="javascript"
 	src="DataTable/js/jquery.dataTables.js"></script>
-<script type="text/javascript" language="javascript"
-	src="DataTable/js/tabela.js"></script>
 </head>
 </head>
 <body>
-
-
 	<br />
 	<br />
 	<br />
 	<br />
 	<br />
-
-
-
-
 	<div class="container">
 		<div class="row">
 			<h3>Lista de Atividades que já foram extraídas</h3>
@@ -46,9 +38,7 @@
 							<th>Nome Usuário</th>
 							<th>NOME_APP</th>
 							<th>Modalidade</th>
-							<th>URL</th>
 							<th></th>
-
 						</tr>
 					</thead>
 					<tbody>
@@ -59,10 +49,10 @@
 								<td>${urls.nome_usuario}</td>
 								<td>${urls.nome_app}</td>
 								<td>${urls.modalidade}</td>
-								<td align="center"><a class='btn btn-primary' href="${urls.url_atividade}" target="_blank">Link </a></td>	
-								<td align="center"><a class='btn btn-success' href="ListaPolar?url=${urls.url_atividade }&nome=${urls.nome_usuario }&id_usu=${urls.id_usuario}
+								<td align="center"><a class='btn btn-success' href="detalhes?url=${urls.url_atividade }&nome=${urls.nome_usuario }&id_usu=${urls.id_usuario}
 								&id_app=${urls.id_app}&nome_app=${urls.nome_app}&modalidade=${urls.modalidade}&id_atividade=${urls.id_atividade}
-								&distancia=${urls.distancia_percorrida}&duracao=${urls.duracao}&data=${urls.data_publicacao}">Detalhes</a></td>
+								&distancia=${urls.distancia_percorrida}&duracao=${urls.duracao}&data=${urls.data_publicacao}&hora=${urls.horario}&calorias=${urls.calorias}
+								&ritmo=${urls.ritmo_medio}&velocidade=${urls.velocidade_media}">Detalhes</a></td>
 							</tr>
 							<% cont++; %>
 						</c:forEach>
@@ -75,5 +65,40 @@
 		<strong>Total de Registros: <%=cont-1%></strong>
 	</h4>
 	<c:import url="rodape.jsp" />
+
+<script type="text/javascript">
+$(document)
+.ready(
+		function tabela_dinamica () {
+			$("#tabela")
+			.DataTable(
+					{
+						"oLanguage": {
+							"sEmptyTable": "Nenhum registro encontrado",
+						    "sInfo": "Mostrando de _START_ at\u00e9 _END_ de _TOTAL_ registros",
+						    "sInfoEmpty": "Mostrando 0 at\u00e9 0 de 0 registros",
+						    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+						    "sInfoPostFix": "",
+						    "sInfoThousands": ".",
+						    "sLengthMenu": "Exibir _MENU_ Resultados por p\u00e1gina",
+						    "sLoadingRecords": "Carregando...",
+						    "sProcessing": "Processando...",
+						    "sZeroRecords": "Nenhum registro encontrado",
+						    "sSearch": "Filtro",
+						    "oPaginate": {
+						        "sNext": "Pr\u00f3ximo",
+						        "sPrevious": "Anterior",
+						        "sFirst": "Primeiro",
+						        "sLast": "\u00daltimo"
+							}
+						},
+
+						"order": [[ 0, "desc" ]],
+
+					});
+		});
+
+
+</script>
 
 </body>

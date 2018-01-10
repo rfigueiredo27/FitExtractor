@@ -198,6 +198,12 @@ public class Atividade {
 		this.clima = clima;
 		this.elevacao = elevacao;
 	}
+	public Atividade() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 		
 	
 	

@@ -46,11 +46,11 @@ color: black;
 						<c:set var="items" value="${total.getTotal()}" />
 						<c:forEach var="lista" items="${items}"><strong>${lista.total_atividades}</strong></c:forEach>
 					</h4>		
-					<h4>Data e Hora da última Extração:
-						<jsp:useBean id="ultima"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
-						<c:set var="items" value="${ultima.getUltimaData()}" />
-						<c:forEach var="lista" items="${items}"><strong>${lista.ultima_data}</strong></c:forEach>
-					</h4>
+<!-- 					<h4>Data e Hora da última Extração: -->
+<%-- 						<jsp:useBean id="ultima"	class="br.cefetrj.fitextractor.dao.UrlDAO" /> --%>
+<%-- 						<c:set var="items" value="${ultima.getUltimaData()}" /> --%>
+<%-- 						<c:forEach var="lista" items="${items}"><strong>${lista.ultima_data}</strong></c:forEach> --%>
+<!-- 					</h4> -->
 				</div>
 			</div>
 			<div class="col-sm-6">

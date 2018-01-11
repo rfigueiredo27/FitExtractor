@@ -322,6 +322,174 @@ public List<URL> getApps() throws DAOException{
 
 	return (lista_url);
 	} // fim
+
+public List<URL> getTotalPorApps() throws DAOException{
+	
+	Connection conexao = new ConnectionFactory().getConnection();
+	List<URL> lista_url = new ArrayList<URL>();
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+	
+	String sql = "select count(id_atividade) as total, nome_app from fitrank.atividades group by nome_app order by count(id_atividade) desc ";
+
+	try{
+		stmt = conexao.prepareStatement(sql);
+		rs = stmt.executeQuery();
+
+		while(rs.next()){
+			URL url = new URL();
+			
+			url.setTotal_atividades(rs.getLong("total"));
+			url.setNome_app(rs.getString("nome_app"));
+			
+			lista_url.add(url);
+		}
+
+	}catch(SQLException e){
+		throw new DAOException("Ocorreu um erro no Sistema", e);
+	}finally{
+		try{
+			if(rs!=null){
+				rs.close();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null){
+					stmt.close();
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(conexao!=null){
+						conexao.close();
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+
+	return (lista_url);
+	} // fim
+
+public List<URL> getPercentHorario() throws DAOException{
+	
+	Connection conexao = new ConnectionFactory().getConnection();
+	List<URL> lista_url = new ArrayList<URL>();
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+	
+	String sql = "select substr(horario, 1, 2) as horario, round(count(*) / (select count(*) from fitrank.atividades where "
+			+ "horario is not null and horario not in ('00:00:00', '01:00:00')) * 100, 4) percent from fitrank.atividades where horario is not null "
+			+ "and horario not in ('00:00:00', '01:00:00') group by substr(horario, 1, 2) order by 2 desc; ";
+
+	try{
+		stmt = conexao.prepareStatement(sql);
+		rs = stmt.executeQuery();
+
+		while(rs.next()){
+			URL url = new URL();
+			
+			url.setPercentual(rs.getFloat("percent"));
+			url.setHorario(rs.getString("horario"));
+			
+			lista_url.add(url);
+		}
+
+	}catch(SQLException e){
+		throw new DAOException("Ocorreu um erro no Sistema", e);
+	}finally{
+		try{
+			if(rs!=null){
+				rs.close();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null){
+					stmt.close();
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(conexao!=null){
+						conexao.close();
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+
+	return (lista_url);
+	} // fim
+
+public List<URL> getPercentPeriodo() throws DAOException{
+	
+	Connection conexao = new ConnectionFactory().getConnection();
+	List<URL> lista_url = new ArrayList<URL>();
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+	
+	String sql = "select desc_periodo, round(count(*) / (select count(desc_periodo) from fitrank.atividades "
+			+ "where horario is not null and horario not in ('00:00:00', '01:00:00')) * 100, 2) percent "
+			+ "from fitrank.atividades where horario is not null and horario not in ('00:00:00', '01:00:00') "
+			+ "group by desc_periodo order by 2 desc; ";
+
+	try{
+		stmt = conexao.prepareStatement(sql);
+		rs = stmt.executeQuery();
+
+		while(rs.next()){
+			URL url = new URL();
+			
+			url.setDesc_periodo(rs.getString("desc_periodo"));
+			url.setPercentual(rs.getFloat("percent"));
+			
+			lista_url.add(url);
+		}
+
+	}catch(SQLException e){
+		throw new DAOException("Ocorreu um erro no Sistema", e);
+	}finally{
+		try{
+			if(rs!=null){
+				rs.close();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null){
+					stmt.close();
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(conexao!=null){
+						conexao.close();
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+
+	return (lista_url);
+	} // fim
+
 	
 }
 

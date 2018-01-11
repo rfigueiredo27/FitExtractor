@@ -25,9 +25,16 @@ public class URL {
 	private String desc_periodo;
 	private Long total_atividades;
 	private String ultima_data;
+	private Float percentual;
 	
 	
 
+	public Float getPercentual() {
+		return percentual;
+	}
+	public void setPercentual(Float percentual) {
+		this.percentual = percentual;
+	}
 	public String getUltima_data() {
 		return ultima_data;
 	}

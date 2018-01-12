@@ -16,14 +16,14 @@ import br.cefetrj.fitextractor.model.URL;
 /**
  * Servlet implementation class ListaURLController
  */
-@WebServlet("/total_atividade")
-public class ListaPosExtracaoApp extends HttpServlet {
+@WebServlet("/ListaPosApp")
+public class ListaTotalAtividadeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ListaPosExtracaoApp() {
+	public ListaTotalAtividadeController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -33,11 +33,13 @@ public class ListaPosExtracaoApp extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String desc_atividade = request.getParameter("atividade");
-			List<URL> urls = new UrlDAO().getTotalAtiv(desc_atividade);
+		String app = request.getParameter("app");
+		System.out.println(app);
+			List<URL> urls = new UrlDAO().getAtivPosApp(app);
 			request.getServletContext().setAttribute("urls", urls);
 			request.setAttribute("urls", request.getServletContext().getAttribute("urls"));
-			RequestDispatcher rd = request.getRequestDispatcher("desempenho.jsp");
+
+			RequestDispatcher rd = request.getRequestDispatcher("lista_pos_app.jsp");
 			rd.forward(request, response);
 	
 	}

@@ -17,9 +17,7 @@ import br.cefetrj.fitextractor.model.URL;
 
 public class UrlDAO {
 
-	
-	
-	public List<URL> getAtivPos() throws DAOException{
+public List<URL> getAtivPos() throws DAOException{
 		Connection conexao = new ConnectionFactory().getConnection();
 		List<URL> lista_url = new ArrayList<URL>();
 		PreparedStatement stmt = null;
@@ -90,8 +88,7 @@ public class UrlDAO {
 		return (lista_url);
 	} // fim getListaUsuarios
 
-
-	public List<URL> getAtivPosApp(String app) throws DAOException{
+public List<URL> getAtivPosApp(String app) throws DAOException{
 		Connection conexao = new ConnectionFactory().getConnection();
 		List<URL> lista_url = new ArrayList<URL>();
 		PreparedStatement stmt = null;
@@ -162,7 +159,7 @@ public class UrlDAO {
 		return (lista_url);
 	} // fim getListaUsuarios
 
-	public List<URL> getTotal() throws DAOException{
+public List<URL> getTotal() throws DAOException{
 		
 		Connection conexao = new ConnectionFactory().getConnection();
 		List<URL> lista_url = new ArrayList<URL>();
@@ -215,6 +212,60 @@ public class UrlDAO {
 		return (lista_url);
 	} // fim
 	
+public List<URL> getTotalAtiv(String desc_atividade) throws DAOException{
+	
+	Connection conexao = new ConnectionFactory().getConnection();
+	List<URL> lista_url = new ArrayList<URL>();
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+	
+	String sql = "SELECT count(id_atividade) as total_atividade FROM fitrank.atividades where desc_atividade = ? ";
+
+	try{
+		stmt = conexao.prepareStatement(sql);
+		stmt.setString(1, desc_atividade);
+		rs = stmt.executeQuery();
+
+		while(rs.next()){
+			URL url = new URL();
+			
+			url.setTotal_atividades(rs.getLong("total_atividade"));
+			
+			lista_url.add(url);
+		}
+
+	}catch(SQLException e){
+		throw new DAOException("Ocorreu um erro no Sistema", e);
+	}finally{
+		try{
+			if(rs!=null){
+				rs.close();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null){
+					stmt.close();
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(conexao!=null){
+						conexao.close();
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+
+	return (lista_url);
+} // fim
+
 public List<URL> getUltimaData() throws DAOException{
 		
 		Connection conexao = new ConnectionFactory().getConnection();
@@ -267,8 +318,7 @@ public List<URL> getUltimaData() throws DAOException{
 
 		return (lista_url);
 	} // fim
-
-		
+	
 public List<URL> getApps() throws DAOException{
 	
 	Connection conexao = new ConnectionFactory().getConnection();
@@ -287,6 +337,59 @@ public List<URL> getApps() throws DAOException{
 			
 			url.setId_app(rs.getLong("id_app"));
 			url.setNome_app(rs.getString("nome_app"));
+			
+			lista_url.add(url);
+		}
+
+	}catch(SQLException e){
+		throw new DAOException("Ocorreu um erro no Sistema", e);
+	}finally{
+		try{
+			if(rs!=null){
+				rs.close();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null){
+					stmt.close();
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(conexao!=null){
+						conexao.close();
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+
+	return (lista_url);
+	} // fim
+
+public List<URL> getAtividades() throws DAOException{
+	
+	Connection conexao = new ConnectionFactory().getConnection();
+	List<URL> lista_url = new ArrayList<URL>();
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+	
+	String sql = "select distinct desc_atividade from fitrank.atividades order by nome_app ";
+
+	try{
+		stmt = conexao.prepareStatement(sql);
+		rs = stmt.executeQuery();
+
+		while(rs.next()){
+			URL url = new URL();
+			
+			url.setDesc_atividade(rs.getString("desc_atividade"));
 			
 			lista_url.add(url);
 		}
@@ -490,6 +593,288 @@ public List<URL> getPercentPeriodo() throws DAOException{
 	return (lista_url);
 	} // fim
 
+public List<URL> getMediaDistancia(String desc_atividade) throws DAOException{
 	
+	Connection conexao = new ConnectionFactory().getConnection();
+	List<URL> lista_url = new ArrayList<URL>();
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+	
+	String sql = "select round(avg(distancia), 2) as media, desc_periodo, desc_atividade from fitrank.atividades "
+			+ "where horario is not null and horario not in ('00:00:00', '01:00:00') "
+			+ "and desc_atividade = ? group by desc_periodo, desc_atividade order by round(avg(distancia), 2) desc";
+
+	try{
+		stmt = conexao.prepareStatement(sql);
+		stmt.setString(1, desc_atividade);
+		rs = stmt.executeQuery();
+
+		while(rs.next()){
+			URL url = new URL();
+			
+			url.setDesc_periodo(rs.getString("desc_periodo"));
+			url.setKmedia(rs.getFloat("media"));
+			
+			lista_url.add(url);
+		}
+
+	}catch(SQLException e){
+		throw new DAOException("Ocorreu um erro no Sistema", e);
+	}finally{
+		try{
+			if(rs!=null){
+				rs.close();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null){
+					stmt.close();
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(conexao!=null){
+						conexao.close();
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+
+	return (lista_url);
+	} // fim
+
+public List<URL> getMediaDuracao(String desc_atividade) throws DAOException{
+	
+	Connection conexao = new ConnectionFactory().getConnection();
+	List<URL> lista_url = new ArrayList<URL>();
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+	
+	String sql = "select sec_to_time(round(avg(time_to_sec(duracao)), 0)) as media, round(avg(time_to_sec(duracao)), 2) as media_decimal, "
+			+ "desc_periodo, desc_atividade from fitrank.atividades where horario is not null and horario not in ('00:00:00', '01:00:00') "
+			+ "and desc_atividade = ? group by desc_periodo, desc_atividade order by sec_to_time(round(avg(time_to_sec(duracao)), 0)) desc ";
+
+	try{
+		stmt = conexao.prepareStatement(sql);
+		stmt.setString(1, desc_atividade);
+		rs = stmt.executeQuery();
+
+		while(rs.next()){
+			URL url = new URL();
+			
+			url.setDesc_periodo(rs.getString("desc_periodo"));
+			url.setKmedia_tempo(rs.getString("media"));
+			
+			lista_url.add(url);
+		}
+
+	}catch(SQLException e){
+		throw new DAOException("Ocorreu um erro no Sistema", e);
+	}finally{
+		try{
+			if(rs!=null){
+				rs.close();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null){
+					stmt.close();
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(conexao!=null){
+						conexao.close();
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+
+	return (lista_url);
+	} // fim
+
+public List<URL> getMediaCalorias(String desc_atividade) throws DAOException{
+	
+	Connection conexao = new ConnectionFactory().getConnection();
+	List<URL> lista_url = new ArrayList<URL>();
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+	
+	String sql = "select round(avg(calorias), 2) as media, desc_periodo, desc_atividade from fitrank.atividades "
+			+ "where horario is not null and horario not in ('00:00:00', '01:00:00') "
+			+ "and desc_atividade = ? group by desc_periodo, desc_atividade order by round(avg(calorias), 2) desc ";
+
+	try{
+		stmt = conexao.prepareStatement(sql);
+		stmt.setString(1, desc_atividade);
+		rs = stmt.executeQuery();
+
+		while(rs.next()){
+			URL url = new URL();
+			
+			url.setDesc_periodo(rs.getString("desc_periodo"));
+			url.setKmedia(rs.getFloat("media"));
+			
+			lista_url.add(url);
+		}
+
+	}catch(SQLException e){
+		throw new DAOException("Ocorreu um erro no Sistema", e);
+	}finally{
+		try{
+			if(rs!=null){
+				rs.close();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null){
+					stmt.close();
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(conexao!=null){
+						conexao.close();
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+
+	return (lista_url);
+	} // fim
+
+public List<URL> getMediaVelocidadeMedia(String desc_atividade) throws DAOException{
+	
+	Connection conexao = new ConnectionFactory().getConnection();
+	List<URL> lista_url = new ArrayList<URL>();
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+	
+	String sql = "select round(avg(velocidade_media), 2) as media, desc_periodo, desc_atividade from fitrank.atividades "
+			+ "where horario is not null and horario not in ('00:00:00', '01:00:00') "
+			+ "and desc_atividade = ? group by desc_periodo, desc_atividade order by round(avg(velocidade_media), 2) desc ";
+
+	try{
+		stmt = conexao.prepareStatement(sql);
+		stmt.setString(1, desc_atividade);
+		rs = stmt.executeQuery();
+
+		while(rs.next()){
+			URL url = new URL();
+			
+			url.setDesc_periodo(rs.getString("desc_periodo"));
+			url.setKmedia(rs.getFloat("media"));
+			
+			lista_url.add(url);
+		}
+
+	}catch(SQLException e){
+		throw new DAOException("Ocorreu um erro no Sistema", e);
+	}finally{
+		try{
+			if(rs!=null){
+				rs.close();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null){
+					stmt.close();
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(conexao!=null){
+						conexao.close();
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	return (lista_url);
+	} // fim
+
+public List<URL> getMediaRitmo(String desc_atividade) throws DAOException{
+	
+	Connection conexao = new ConnectionFactory().getConnection();
+	List<URL> lista_url = new ArrayList<URL>();
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+	
+	String sql = "select sec_to_time(round(avg(time_to_sec(ritmo_medio)), 0)) as media, round(avg(time_to_sec(ritmo_medio)), 2) as media_decimal, "
+			+ "desc_periodo, desc_atividade from fitrank.atividades where horario is not null and horario not in ('00:00:00', '01:00:00') "
+			+ "and desc_atividade = ? group by desc_periodo, desc_atividade order by sec_to_time(round(avg(time_to_sec(ritmo_medio)), 0)) ";
+
+	try{
+		stmt = conexao.prepareStatement(sql);
+		stmt.setString(1, desc_atividade);
+		rs = stmt.executeQuery();
+
+		while(rs.next()){
+			URL url = new URL();
+			
+			url.setDesc_periodo(rs.getString("desc_periodo"));
+			url.setKmedia_tempo(rs.getString("media"));
+			
+			lista_url.add(url);
+		}
+
+	}catch(SQLException e){
+		throw new DAOException("Ocorreu um erro no Sistema", e);
+	}finally{
+		try{
+			if(rs!=null){
+				rs.close();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null){
+					stmt.close();
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(conexao!=null){
+						conexao.close();
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	return (lista_url);
+	} // fim
+
 }
 

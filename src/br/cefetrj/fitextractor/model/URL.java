@@ -26,9 +26,24 @@ public class URL {
 	private Long total_atividades;
 	private String ultima_data;
 	private Float percentual;
+	private Float kmedia;
+	private String kmedia_tempo;
+	
 	
 	
 
+	public String getKmedia_tempo() {
+		return kmedia_tempo;
+	}
+	public void setKmedia_tempo(String kmedia_tempo) {
+		this.kmedia_tempo = kmedia_tempo;
+	}
+	public Float getKmedia() {
+		return kmedia;
+	}
+	public void setKmedia(Float kmedia) {
+		this.kmedia = kmedia;
+	}
 	public Float getPercentual() {
 		return percentual;
 	}

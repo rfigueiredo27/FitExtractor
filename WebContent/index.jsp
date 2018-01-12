@@ -46,11 +46,6 @@ color: black;
 						<c:set var="items" value="${total.getTotal()}" />
 						<c:forEach var="lista" items="${items}"><strong>${lista.total_atividades}</strong></c:forEach>
 					</h4>		
-<!-- 					<h4>Data e Hora da última Extração: -->
-<%-- 						<jsp:useBean id="ultima"	class="br.cefetrj.fitextractor.dao.UrlDAO" /> --%>
-<%-- 						<c:set var="items" value="${ultima.getUltimaData()}" /> --%>
-<%-- 						<c:forEach var="lista" items="${items}"><strong>${lista.ultima_data}</strong></c:forEach> --%>
-<!-- 					</h4> -->
 				</div>
 			</div>
 			<div class="col-sm-6">
@@ -74,16 +69,15 @@ color: black;
 					</h1>
 				</div>
 			</div>
-			
 			<div class="col-sm-6">
 				<h1 align="center" style="color: black; font-weight: 400;">Análise de Desempenho</h1>
-				
-				<div class="text-center carousel-inner center-block">
-					<h1 class="center">
-							<a class="btn btn-danger btn-lg" href="desempenho.jsp"><h1 style="color: white;">Acessar página</h1></a>
-					</h1>
+				<div class="text-center">
+					<jsp:useBean id="atividades" class="br.cefetrj.fitextractor.dao.UrlDAO" />
+						<c:set var="items" value="${atividades.getAtividades()}" />
+						<c:forEach var="lista" items="${items}">
+							<h3 style="margin-top: -10px;"><a class="btn btn-danger" href="desempenho.jsp?atividade=${lista.desc_atividade}">${lista.desc_atividade}</a></h3>
+						</c:forEach>
 				</div>
-				
 			</div>
 		</div>
 	</div>

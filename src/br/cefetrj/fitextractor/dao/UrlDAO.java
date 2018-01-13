@@ -25,8 +25,14 @@ public List<URL> getAtivPos() throws DAOException{
 
 		//String = "SELECT * FROM lista_url where usuario like 'JR%' ";
 
-		String sql = "select id_usuario, nome_usuario, id_app, nome_app, modalidade, id_atividade, desc_atividade, duracao_decimal, duracao, "
-				+ "velocidade_media, ritmo_medio, calorias, data_atividade, horario, id_periodo, desc_periodo, url, distancia from atividades";
+		String sql = 	"INSERT INTO atividades (id_usuario,nome_usuario, id_app, nome_app, id_atividade_fitrank," 
+						+"modalidade, desc_atividade, duracao_decimal, distancia, duracao, velocidade_media,"
+						+"ritmo_medio, calorias, data_atividade, horario, id_periodo, desc_periodo, url"
+						+")"
+						+"SELECT id_usuario,nome_usuario, id_app, nome_app, id_atividade," 
+						+"modalidade, desc_atividade, duracao_decimal, distancia, duracao, velocidade_media,"
+						+"ritmo_medio, caloria_aproximada, data_publicacao, horario, id_periodo, desc_periodo, url_atividade"
+						+"FROM bd_atividades order by data_publicacao; ";
 
 		try{
 			stmt = (PreparedStatement) conexao.prepareStatement(sql);			

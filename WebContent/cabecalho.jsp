@@ -10,6 +10,7 @@
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
 <link href="css/animate.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
 <style type="text/css">
 .classico{
   padding: 21px 21px;
@@ -22,35 +23,21 @@
 </style>
 </head>
 <body>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<header id="header" role="banner">
-	<div class="main-nav">
-		<div class="container">
-			<div class="row">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".navbar-collapse">
-						<span class="sr-only"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.jsp">
-						<h1 class="classico">
-							Fit Extractor
-						</h1>
-					</a>
-				</div>
-				<div class="collapse navbar-collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="scroll"><a href="index.jsp">Home</a></li>
-					</ul>
-				</div>
+	<div class="container">
+		<div class="row">
+			<div align="center">
+				<a href="index.jsp"><img class="img-responsive" src="images/twit.png" alt="twit"></a>
 			</div>
+			<h3 align="center" style="color: black; font-weight: 400;">O FitExtractor extrai dados do FitRank. 
+			<a class="btn btn-info" href="index.jsp" style="margin-top: -5px;">voltar a página inicial</a></h3>
 		</div>
 	</div>
-	</header>
 
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery.parallax.js"></script>
+	<script type="text/javascript" src="js/coundown-timer.js"></script>
+	<script type="text/javascript" src="js/jquery.scrollTo.js"></script>
 	<script type="text/javascript" src="js/jquery.nav.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 </body>

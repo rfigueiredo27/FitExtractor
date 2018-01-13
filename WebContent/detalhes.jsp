@@ -9,25 +9,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name='viewport' content='width=device-width, initial-scale=1'/>
-<title>Polar</title>
-<link rel="stylesheet" type="text/css"
-	href="DataTable/css/jquery.dataTables.css">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-<script type="text/javascript" language="javascript"
-	src="DataTable/js/jquery.js"></script>
-<script type="text/javascript" language="javascript"
-	src="DataTable/js/jquery.dataTables.js"></script>
-<script type="text/javascript" language="javascript"
-	src="DataTable/js/tabela.js"></script>
-</head>
+<title>Pós Processamento</title>
+<style>
+.linha-vertical {
+	height: 450px; /*Altura da linha*/
+	border-left: 1px solid;
+	margin-left: 60px;
+	margin-right: -60px;
+	color: black;
+	
+}
+h1, h1, h2, h4, h5, body{
+color: black;
+}
+</style>
 </head>
 <body>
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<h3 align="center">Detalhes da Atividade</h3>
+	
+	<h2 align="center">Detalhes da Atividade</h2>
 	<div class="contact-section">
 	<div class="container">
 		<div class="row"><br>
@@ -128,7 +127,7 @@
 		</div>
 	</div>
 	</div>
-	
+	<a class="btn btn-primary" href="index.jsp" style="margin-top: -5px;">Voltar a Página Inicial</a>
 
 	<c:import url="rodape.jsp" />
 

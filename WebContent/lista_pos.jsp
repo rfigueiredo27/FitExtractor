@@ -9,25 +9,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name='viewport' content='width=device-width, initial-scale=1'/>
-<title>URL</title>
-<link rel="stylesheet" type="text/css"
-	href="DataTable/css/jquery.dataTables.css">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-<script type="text/javascript" language="javascript"
-	src="DataTable/js/jquery.js"></script>
-<script type="text/javascript" language="javascript"
-	src="DataTable/js/jquery.dataTables.js"></script>
-<script type="text/javascript" language="javascript"
-	src="DataTable/js/tabela.js"></script>
-</head>
+<title>Pós Processamento</title>
+<link rel="stylesheet" type="text/css"	href="DataTable/css/jquery.dataTables.css">
+<script type="text/javascript" language="javascript" src="DataTable/js/jquery.dataTables.js"></script>
+<style>
+.linha-vertical {
+	height: 450px; /*Altura da linha*/
+	border-left: 1px solid;
+	margin-left: 60px;
+	margin-right: -60px;
+	color: black;
+	
+}
+h1, h1, h2, h4, h5, body{
+color: black;
+}
+</style>
 </head>
 <body>
-
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
 
 	<div class="container">
 		<div class="row">
@@ -74,7 +73,7 @@
 	<h4 align="center">
 		<strong>Total de Registros: <%out.print(cont); %></strong>
 	</h4>
-
+	<a class="btn btn-primary" href="index.jsp" style="margin-top: -5px;">voltar a página inicial</a>
 	<c:import url="rodape.jsp" />
 
 </body>

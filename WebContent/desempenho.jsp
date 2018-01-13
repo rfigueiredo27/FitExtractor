@@ -9,19 +9,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name='viewport' content='width=device-width, initial-scale=1'/>
 <title>Pós Processamento</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<style>
+.linha-vertical {
+	height: 450px; /*Altura da linha*/
+	border-left: 1px solid;
+	margin-left: 60px;
+	margin-right: -60px;
+	color: black;
+	
+}
+h1, h2, h3, h4, h5, body{
+color: black;
+}
+</style>
 </head>
-</head>
+
 <body>
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
+	
 	<div class="container">
 		<div class="row">
 			<center>
-			<h2>Análises de Desempenho das Atividades</h2>
+			<h1>Análises de Desempenho das Atividades</h1>
 			<br>
 			<h4>Total de Atividades de ${param.atividade}:
 				<jsp:useBean id="total"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
@@ -29,17 +37,17 @@
 				<c:forEach var="lista" items="${items}"><strong>${lista.total_atividades}</strong></c:forEach>
 			</h4>
 			<hr>
-			<h3>Análise das Médias de Parâmetros separados por Períodos</h3>
-			<h6>Manhã: 06:00 - 11:59</h6>
-			<h6>Tarde: 12:00 - 17:59</h6>
-			<h6>Noite: 18:00 - 23:59</h6>
-			<h6>Madrugada: 00:00 - 05:59</h6>
+			<h2>Análise das Médias de Parâmetros separados por Períodos</h2>
+			<h4>Manhã: 06:00 - 11:59</h4>
+			<h4>Tarde: 12:00 - 17:59</h4>
+			<h4>Noite: 18:00 - 23:59</h4>
+			<h4>Madrugada: 00:00 - 05:59</h4>
 			</center>
 			<hr>
-			<h5 align="center"><strong>Análise de Dados Exatos (Distância, Duração, Velocidade Média e Ritmo Médio)</strong></h5>
+			<h3 align="center"><strong>Análise de Dados Exatos (Distância, Duração, Velocidade Média e Ritmo Médio)</strong></h3>
 			<hr>
 			<div class="col-sm-6">
-			<h5>Período X Distância</h5>
+			<h3>Período X Distância</h3>
 				<table id="tabela1" class="table-striped table-bordered table-hover" style="width: 100%">
 					<jsp:useBean id="total_app"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
 					<c:set var="items" value="${total_app.getMediaDistancia(param.atividade)}" />
@@ -65,7 +73,7 @@
 			<hr>
 			</div>
 			<div class="col-sm-6">
-			<h5>Período X Duração</h5>
+			<h3>Período X Duração</h3>
 				<table id="tabela2" class="table-striped table-bordered table-hover" style="width: 100%">
 					<jsp:useBean id="total_app2"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
 					<c:set var="items" value="${total_app.getMediaDuracao(param.atividade)}" />
@@ -92,7 +100,7 @@
 			</div>
 			
 			<div class="col-sm-6">
-			<h5>Período X Velocidade</h5>
+			<h3>Período X Velocidade</h3>
 				<table id="tabela3" class="table-striped table-bordered table-hover" style="width: 100%">
 					<jsp:useBean id="total_app3"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
 					<c:set var="items" value="${total_app3.getMediaVelocidadeMedia(param.atividade)}" />
@@ -118,7 +126,7 @@
 			<hr>
 			</div>
 			<div class="col-sm-6">
-			<h5>Período X Ritmo</h5>
+			<h3>Período X Ritmo</h3>
 				<table id="tabela4" class="table-striped table-bordered table-hover" style="width: 100%">
 					<jsp:useBean id="total_app4"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
 					<c:set var="items" value="${total_app4.getMediaRitmo(param.atividade)}" />
@@ -145,8 +153,8 @@
 			</div>
 			<hr>
 			<div class="col-sm-12" align="center">
-			<h5 align="center"><strong>Análise de Dados Aproximados (Gasto médio de Calorias)</strong></h5>
-			<h5>Período X Calorias (≈)</h5>
+			<h3 align="center"><strong>Análise de Dados Aproximados (Gasto médio de Calorias)</strong></h3>
+			<h3>Período X Calorias (≈)</h3>
 				<table id="tabela5" class="table-striped table-bordered table-hover" style="width: 50%">
 					<jsp:useBean id="total_app5"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
 					<c:set var="items" value="${total_app5.getMediaCalorias(param.atividade)}" />
@@ -173,6 +181,6 @@
 			</div>
 		</div>
 	</div>
-	
+	<a class="btn btn-primary" href="index.jsp" style="margin-top: -5px;">Voltar a Página Inicial</a>
 	<c:import url="rodape.jsp" />
 </body>

@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.cefetrj.fitextractor.dao.UrlDAO;
-import br.cefetrj.fitextractor.model.URL;
+import br.cefetrj.fitextractor.dao.ListarDao;
+import br.cefetrj.fitextractor.model.Atividade;
 
 /**
  * Servlet implementation class ListaURLController
@@ -34,9 +34,9 @@ public class ListaPosExtracao extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
     	   	
-		List<URL> urls = new UrlDAO().getAtivPos();
-		request.getServletContext().setAttribute("urls", urls);
-		request.setAttribute("urls", request.getServletContext().getAttribute("urls"));
+		List<Atividade> atividade = new ListarDao().getAtivPos();
+		request.getServletContext().setAttribute("atividade", atividade);
+		request.setAttribute("atividade", request.getServletContext().getAttribute("atividade"));
 
 RequestDispatcher rd = request.getRequestDispatcher("lista_pos.jsp");
 rd.forward(request, response);

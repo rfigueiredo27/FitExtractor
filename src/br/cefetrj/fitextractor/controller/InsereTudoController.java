@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.cefetrj.fitextractor.dao.AtividadeDao;
-import br.cefetrj.fitextractor.dao.UrlDAO;
-import br.cefetrj.fitextractor.model.URL;
+import br.cefetrj.fitextractor.dao.InsercaoDao;
+import br.cefetrj.fitextractor.dao.ListarDao;
+import br.cefetrj.fitextractor.model.Atividade;
 
 /**
  * Servlet implementation class ListaURLController
@@ -23,7 +23,7 @@ public class InsereTudoController extends HttpServlet {
     
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		AtividadeDao atividade = new AtividadeDao();
+		InsercaoDao atividade = new InsercaoDao();
 		atividade.insereTudo();
 		
 		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");

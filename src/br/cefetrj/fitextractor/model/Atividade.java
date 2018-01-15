@@ -1,60 +1,120 @@
 package br.cefetrj.fitextractor.model;
 
-import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Calendar;
 
 public class Atividade {
 	
-	private Long id_atividade;
-	private Long id_app;
-	private String nome_app;
-	private Long id_atividade_fitrank;
 	private Long id_usuario;
 	private String nome_usuario;
-	private String tipo_atividade;
-	private String data_atividade;
-	private String hora_atividade;
+	private Long id_app;
+	private String nome_app;
+	private Long id_atividade;
+	private String modalidade;
+	private Float distancia_percorrida;
 	private String duracao;
-	private Float distancia;
+	private Float duracao_decimal;
+	private String data_publicacao;
+	private String url_atividade;
 	private Float velocidade_media;
-	private Float velocidade_maxima;
-	private Integer frequencia_cardiaca_media;
-	private Integer frequencia_cardiaca_maxima;
-	private Integer frequencia_cardiaca_minima;
-	private Integer calorias;
+	private String desc_atividade;
 	private String ritmo_medio;
-	private String ritmo_maximo;
-	private Integer temperatura_ambiente;
-	private String clima;
-	private Integer elevacao;
+	private int calorias;
+	private String horario;
+	private int id_periodo;
+	private String desc_periodo;
+	private Long total_atividades;
+	private String ultima_data;
+	private Float percentual;
+	private Float kmedia;
+	private String kmedia_tempo;
 	
-		
 	
 	
-	
-	public Integer getElevacao() {
-		return elevacao;
+
+	public String getKmedia_tempo() {
+		return kmedia_tempo;
 	}
-	public void setElevacao(Integer elevacao) {
-		this.elevacao = elevacao;
+	public void setKmedia_tempo(String kmedia_tempo) {
+		this.kmedia_tempo = kmedia_tempo;
 	}
-	public String getHora_atividade() {
-		return hora_atividade;
+	public Float getKmedia() {
+		return kmedia;
 	}
-	public void setHora_atividade(String hora_usuario) {
-		this.hora_atividade = hora_usuario;
+	public void setKmedia(Float kmedia) {
+		this.kmedia = kmedia;
 	}
-	public String getClima() {
-		return clima;
+	public Float getPercentual() {
+		return percentual;
 	}
-	public void setClima(String clima) {
-		this.clima = clima;
+	public void setPercentual(Float percentual) {
+		this.percentual = percentual;
 	}
-	public String getMeteorologia() {
-		return clima;
+	public String getUltima_data() {
+		return ultima_data;
 	}
-	public void setMeteorologia(String meteorologia) {
-		this.clima = meteorologia;
+	public void setUltima_data(String ultima_data) {
+		this.ultima_data = ultima_data;
+	}
+	public Long getTotal_atividades() {
+		return total_atividades;
+	}
+	public void setTotal_atividades(Long total_atividades) {
+		this.total_atividades = total_atividades;
+	}
+	public Float getDuracao_decimal() {
+		return duracao_decimal;
+	}
+	public void setDuracao_decimal(Float duracao_decimal) {
+		this.duracao_decimal = duracao_decimal;
+	}
+	public String getDesc_atividade() {
+		return desc_atividade;
+	}
+	public void setDesc_atividade(String desc_atividade) {
+		this.desc_atividade = desc_atividade;
+	}
+	public String getRitmo_medio() {
+		return ritmo_medio;
+	}
+	public void setRitmo_medio(String ritmo_medio) {
+		this.ritmo_medio = ritmo_medio;
+	}
+	public int getCalorias() {
+		return calorias;
+	}
+	public void setCalorias(int calorias) {
+		this.calorias = calorias;
+	}
+	public String getHorario() {
+		return horario;
+	}
+	public void setHorario(String horario) {
+		this.horario = horario;
+	}
+	public int getId_periodo() {
+		return id_periodo;
+	}
+	public void setId_periodo(int id_periodo) {
+		this.id_periodo = id_periodo;
+	}
+	public String getDesc_periodo() {
+		return desc_periodo;
+	}
+	public void setDesc_periodo(String desc_periodo) {
+		this.desc_periodo = desc_periodo;
+	}
+	public Float getVelocidade_media() {
+		return velocidade_media;
+	}
+	public void setVelocidade_media(Float velocidade_media) {
+		this.velocidade_media = velocidade_media;
+	}
+	public String getDuracao() {
+		return duracao;
+	}
+	public void setDuracao(String duracao) {
+		this.duracao = duracao;
 	}
 	public Long getId_usuario() {
 		return id_usuario;
@@ -68,12 +128,6 @@ public class Atividade {
 	public void setNome_usuario(String nome_usuario) {
 		this.nome_usuario = nome_usuario;
 	}
-	public Long getId_atividade() {
-		return id_atividade;
-	}
-	public void setId_atividade(Long id_atividade) {
-		this.id_atividade = id_atividade;
-	}
 	public Long getId_app() {
 		return id_app;
 	}
@@ -86,127 +140,40 @@ public class Atividade {
 	public void setNome_app(String nome_app) {
 		this.nome_app = nome_app;
 	}
-	public Long getId_atividade_fitrank() {
-		return id_atividade_fitrank;
+	public Long getId_atividade() {
+		return id_atividade;
 	}
-	public void setId_atividade_fitrank(Long id_atividade_fitrank) {
-		this.id_atividade_fitrank = id_atividade_fitrank;
+	public void setId_atividade(Long id_atividade) {
+		this.id_atividade = id_atividade;
 	}
-	public String getTipo_atividade() {
-		return tipo_atividade;
+	public String getModalidade() {
+		return modalidade;
 	}
-	public void setTipo_atividade(String tipo_atividade) {
-		this.tipo_atividade = tipo_atividade;
+	public void setModalidade(String modalidade) {
+		this.modalidade = modalidade;
 	}
-	public String getData_atividade() {
-		return data_atividade;
-	}
-	public void setData_atividade(String h2) {
-		this.data_atividade = h2;
-	}
-	public String getDuracao() {
-		return duracao;
-	}
-	public void setDuracao(String duracao) {
-		this.duracao = duracao;
-	}
-	public Float getDistancia() {
-		return distancia;
-	}
-	public void setDistancia(Float distancia) {
-		this.distancia = distancia;
-	}
-	public Float getVelocidade_media() {
-		return velocidade_media;
-	}
-	public void setVelocidade_media(Float velocidade_media) {
-		this.velocidade_media = velocidade_media;
-	}
-	public Float getVelocidade_maxima() {
-		return velocidade_maxima;
-	}
-	public void setVelocidade_maxima(Float velocidade_maxima) {
-		this.velocidade_maxima = velocidade_maxima;
-	}
-	public Integer getFrequencia_cardiaca_media() {
-		return frequencia_cardiaca_media;
-	}
-	public void setFrequencia_cardiaca_media(Integer frequencia_cardiaca_media) {
-		this.frequencia_cardiaca_media = frequencia_cardiaca_media;
-	}
-	public Integer getFrequencia_cardiaca_maxima() {
-		return frequencia_cardiaca_maxima;
-	}
-	public void setFrequencia_cardiaca_maxima(Integer frequencia_cardiaca_maxima) {
-		this.frequencia_cardiaca_maxima = frequencia_cardiaca_maxima;
-	}
-	public Integer getFrequencia_cardiaca_minima() {
-		return frequencia_cardiaca_minima;
-	}
-	public void setFrequencia_cardiaca_minima(Integer frequencia_cardiaca_minima) {
-		this.frequencia_cardiaca_minima = frequencia_cardiaca_minima;
-	}
-	public Integer getCalorias() {
-		return calorias;
-	}
-	public void setCalorias(Integer calorias) {
-		this.calorias = calorias;
-	}
-	public String getRitmo_medio() {
-		return ritmo_medio;
-	}
-	public void setRitmo_medio(String ritmo_medio) {
-		this.ritmo_medio = ritmo_medio;
-	}
-	public String getRitmo_maximo() {
-		return ritmo_maximo;
-	}
-	public void setRitmo_maximo(String ritmo_maximo) {
-		this.ritmo_maximo = ritmo_maximo;
-	}
-	public Integer getTemperatura_ambiente() {
-		return temperatura_ambiente;
-	}
-	public void setTemperatura_ambiente(Integer temperatura_ambiente) {
-		this.temperatura_ambiente = temperatura_ambiente;
-	}
-	public Atividade(Long id_app, String nome_app, Long id_atividade_fitrank, Long id_usuario, String nome_usuario,
-			String tipo_atividade, String data_atividade, String hora_atividade, String duracao, Float distancia,
-			Float velocidade_media, Float velocidade_maxima, Integer frequencia_cardiaca_media,
-			Integer frequencia_cardiaca_maxima, Integer frequencia_cardiaca_minima, Integer calorias,
-			String ritmo_medio, String ritmo_maximo, Integer temperatura_ambiente, String clima, Integer elevacao) {
-		super();
-		this.id_app = id_app;
-		this.nome_app = nome_app;
-		this.id_atividade_fitrank = id_atividade_fitrank;
-		this.id_usuario = id_usuario;
-		this.nome_usuario = nome_usuario;
-		this.tipo_atividade = tipo_atividade;
-		this.data_atividade = data_atividade;
-		this.hora_atividade = hora_atividade;
-		this.duracao = duracao;
-		this.distancia = distancia;
-		this.velocidade_media = velocidade_media;
-		this.velocidade_maxima = velocidade_maxima;
-		this.frequencia_cardiaca_media = frequencia_cardiaca_media;
-		this.frequencia_cardiaca_maxima = frequencia_cardiaca_maxima;
-		this.frequencia_cardiaca_minima = frequencia_cardiaca_minima;
-		this.calorias = calorias;
-		this.ritmo_medio = ritmo_medio;
-		this.ritmo_maximo = ritmo_maximo;
-		this.temperatura_ambiente = temperatura_ambiente;
-		this.clima = clima;
-		this.elevacao = elevacao;
-	}
-	public Atividade() {
-		super();
-		// TODO Auto-generated constructor stub
+	public Float getDistancia_percorrida() {
+		return distancia_percorrida;
 	}
 	
 	
-		
+	public void setDistancia_percorrida(Float distancia_percorrida) {
+		this.distancia_percorrida = distancia_percorrida;
+	}
+	public String getData_publicacao() {
+		return data_publicacao;
+	}
+	public void setData_publicacao(String data_publicacao) {
+		this.data_publicacao = data_publicacao;
+	}
+	public String getUrl_atividade() {
+		return url_atividade;
+	}
+	public void setUrl_atividade(String url_atividade) {
+		this.url_atividade = url_atividade;
+	}
 	
 	
 	
-	
+
 }

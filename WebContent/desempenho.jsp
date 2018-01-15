@@ -32,7 +32,7 @@ color: black;
 			<h1>Análises de Desempenho das Atividades</h1>
 			<br>
 			<h4>Total de Atividades de ${param.atividade}:
-				<jsp:useBean id="total"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
+				<jsp:useBean id="total"	class="br.cefetrj.fitextractor.dao.ListarDao" />
 				<c:set var="items" value="${total.getTotalAtiv(param.atividade)}" />
 				<c:forEach var="lista" items="${items}"><strong>${lista.total_atividades}</strong></c:forEach>
 			</h4>
@@ -49,7 +49,7 @@ color: black;
 			<div class="col-sm-6">
 			<h3>Período X Distância</h3>
 				<table id="tabela1" class="table-striped table-bordered table-hover" style="width: 100%">
-					<jsp:useBean id="total_app"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
+					<jsp:useBean id="total_app"	class="br.cefetrj.fitextractor.dao.ListarDao" />
 					<c:set var="items" value="${total_app.getMediaDistancia(param.atividade)}" />
 					<thead>
 						<tr>
@@ -75,7 +75,7 @@ color: black;
 			<div class="col-sm-6">
 			<h3>Período X Duração</h3>
 				<table id="tabela2" class="table-striped table-bordered table-hover" style="width: 100%">
-					<jsp:useBean id="total_app2"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
+					<jsp:useBean id="total_app2"	class="br.cefetrj.fitextractor.dao.ListarDao" />
 					<c:set var="items" value="${total_app.getMediaDuracao(param.atividade)}" />
 					<thead>
 						<tr>
@@ -102,7 +102,7 @@ color: black;
 			<div class="col-sm-6">
 			<h3>Período X Velocidade</h3>
 				<table id="tabela3" class="table-striped table-bordered table-hover" style="width: 100%">
-					<jsp:useBean id="total_app3"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
+					<jsp:useBean id="total_app3"	class="br.cefetrj.fitextractor.dao.ListarDao" />
 					<c:set var="items" value="${total_app3.getMediaVelocidadeMedia(param.atividade)}" />
 					<thead>
 						<tr>
@@ -128,7 +128,7 @@ color: black;
 			<div class="col-sm-6">
 			<h3>Período X Ritmo</h3>
 				<table id="tabela4" class="table-striped table-bordered table-hover" style="width: 100%">
-					<jsp:useBean id="total_app4"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
+					<jsp:useBean id="total_app4"	class="br.cefetrj.fitextractor.dao.ListarDao" />
 					<c:set var="items" value="${total_app4.getMediaRitmo(param.atividade)}" />
 					<thead>
 						<tr>
@@ -156,7 +156,7 @@ color: black;
 			<h3 align="center"><strong>Análise de Dados Aproximados (Gasto médio de Calorias)</strong></h3>
 			<h3>Período X Calorias (≈)</h3>
 				<table id="tabela5" class="table-striped table-bordered table-hover" style="width: 50%">
-					<jsp:useBean id="total_app5"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
+					<jsp:useBean id="total_app5"	class="br.cefetrj.fitextractor.dao.ListarDao" />
 					<c:set var="items" value="${total_app5.getMediaCalorias(param.atividade)}" />
 					<thead>
 						<tr>

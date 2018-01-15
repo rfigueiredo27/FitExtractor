@@ -31,14 +31,14 @@ color: black;
 			<br>
 			
 			<h3>Total de Atividades Extraídas:
-						<jsp:useBean id="total"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
+						<jsp:useBean id="total"	class="br.cefetrj.fitextractor.dao.ListarDao" />
 						<c:set var="items" value="${total.getTotal()}" />
 						<c:forEach var="lista" items="${items}"><strong>${lista.total_atividades}</strong></c:forEach>
 			</h3>
 			<hr>
 			<h3>Total de Atividades por Aplicativos</h3>
 				<table id="tabela2" class="table-striped table-bordered table-hover" style="width: 100%">
-					<jsp:useBean id="total_app"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
+					<jsp:useBean id="total_app"	class="br.cefetrj.fitextractor.dao.ListarDao" />
 					<c:set var="items" value="${total_app.getTotalPorApps()}" />
 					<thead>
 						<tr>
@@ -63,7 +63,7 @@ color: black;
 			<h3>Percentual de Atividades por Período do Dia</h3>
 			<div class="dataTables_wrapper">
 			<table id="tabela3" class="table-striped table-bordered table-hover" style="width: 100%">
-					<jsp:useBean id="percent_hora"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
+					<jsp:useBean id="percent_hora"	class="br.cefetrj.fitextractor.dao.ListarDao" />
 					<c:set var="items" value="${percent_hora.getPercentPeriodo()}" />
 					<thead>
 						<tr>

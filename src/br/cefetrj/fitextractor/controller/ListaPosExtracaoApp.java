@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.cefetrj.fitextractor.dao.UrlDAO;
-import br.cefetrj.fitextractor.model.URL;
+import br.cefetrj.fitextractor.dao.ListarDao;
+import br.cefetrj.fitextractor.model.Atividade;
 
 /**
  * Servlet implementation class ListaURLController
  */
-@WebServlet("/total_atividade")
+@WebServlet("/listar_atividades")
 public class ListaPosExtracaoApp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -33,11 +33,11 @@ public class ListaPosExtracaoApp extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String desc_atividade = request.getParameter("atividade");
-			List<URL> urls = new UrlDAO().getTotalAtiv(desc_atividade);
-			request.getServletContext().setAttribute("urls", urls);
-			request.setAttribute("urls", request.getServletContext().getAttribute("urls"));
-			RequestDispatcher rd = request.getRequestDispatcher("desempenho.jsp");
+		String app = request.getParameter("app");
+			List<Atividade> atividade = new ListarDao().getAtivPosApp(app);
+			request.getServletContext().setAttribute("atividade", atividade);
+			request.setAttribute("atividade", request.getServletContext().getAttribute("atividade"));
+			RequestDispatcher rd = request.getRequestDispatcher("lista_pos_app.jsp");
 			rd.forward(request, response);
 	
 	}

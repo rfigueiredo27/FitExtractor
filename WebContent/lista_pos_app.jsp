@@ -47,16 +47,16 @@ color: black;
 					</thead>
 					<tbody>
 						<%int cont = 1; %>
-						<c:forEach items="${ urls }" var="urls">
+						<c:forEach items="${ atividade }" var="atividade">
 							<tr>
-								<td>${urls.data_publicacao}</td>
-								<td>${urls.nome_usuario}</td>
-								<td>${urls.nome_app}</td>
-								<td>${urls.modalidade}</td>
-								<td align="center"><a class='btn btn-success' href="detalhes?url=${urls.url_atividade }&nome=${urls.nome_usuario }&id_usu=${urls.id_usuario}
-								&id_app=${urls.id_app}&nome_app=${urls.nome_app}&modalidade=${urls.modalidade}&id_atividade=${urls.id_atividade}
-								&distancia=${urls.distancia_percorrida}&duracao=${urls.duracao}&data=${urls.data_publicacao}&hora=${urls.horario}&calorias=${urls.calorias}
-								&ritmo=${urls.ritmo_medio}&velocidade=${urls.velocidade_media}">Detalhes</a></td>
+								<td>${atividade.data_publicacao}</td>
+								<td>${atividade.nome_usuario}</td>
+								<td>${atividade.nome_app}</td>
+								<td>${atividade.modalidade}</td>
+								<td align="center"><a class='btn btn-success' href="detalhes?url=${atividade.url_atividade }&nome=${atividade.nome_usuario }&id_usu=${atividade.id_usuario}
+								&id_app=${atividade.id_app}&nome_app=${atividade.nome_app}&modalidade=${atividade.modalidade}&id_atividade=${atividade.id_atividade}
+								&distancia=${atividade.distancia_percorrida}&duracao=${atividade.duracao}&data=${atividade.data_publicacao}&hora=${atividade.horario}&calorias=${atividade.calorias}
+								&ritmo=${atividade.ritmo_medio}&velocidade=${atividade.velocidade_media}">Detalhes</a></td>
 							</tr>
 							<% cont++; %>
 						</c:forEach>

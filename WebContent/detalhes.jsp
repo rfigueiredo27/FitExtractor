@@ -64,21 +64,21 @@ color: black;
 					<div class="form-group">
 					<label class="control-label col-sm-4">Modalidade:</label> 
 					<div class="col-sm-8">
-						<input type="text" name="modalidade" class="form-control"  value="${pf.tipo_atividade}">
+						<input type="text" name="modalidade" class="form-control"  value="${pf.desc_atividade}">
 					</div>
 					</div>
 					
 					<div class="form-group">
 					<label class="control-label col-sm-4">Data da Atividade:</label> 
 					<div class="col-sm-8">
-						<input type="text" name="data"	class="form-control"  value="${pf.data_atividade}">
+						<input type="text" name="data"	class="form-control"  value="${pf.data_publicacao}">
 					</div>
 					</div>
 					
 					<div class="form-group">
 					<label class="control-label col-sm-4">Hora da Atividade:</label> 
 					<div class="col-sm-8">
-						<input type="text" name="hora"	class="form-control"  value="${pf.hora_atividade}">
+						<input type="text" name="hora"	class="form-control"  value="${pf.horario}">
 					</div>
 					</div>
 					
@@ -92,14 +92,14 @@ color: black;
 					<div class="form-group">
 					<label class="control-label col-sm-4">Distância (Km):</label> 
 					<div class="col-sm-8">
-						<input type="number" name="distancia"	class="form-control"  value="${pf.distancia}">
+						<input type="text" name="distancia"	class="form-control"  value="${pf.distancia_percorrida}">
 					</div>
 					</div>
 					
 					<div class="form-group">
 					<label class="control-label col-sm-4">Calorias:</label> 
 					<div class="col-sm-8">
-						<input type="number" name="calorias" class="form-control"  value="${pf.calorias}">
+						<input type="text" name="calorias" class="form-control"  value="${pf.calorias}">
 					</div>
 					</div>
 					
@@ -113,7 +113,7 @@ color: black;
 					<div class="form-group">
 					<label class="control-label col-sm-4">Velocidade Média (Km/h):</label> 
 					<div class="col-sm-8">
-						<input type="number" name="vel_media"	class="form-control"  value="${pf.velocidade_media}">
+						<input type="text" name="vel_media"	class="form-control"  value="${pf.velocidade_media}">
 					</div>
 					</div>
 					

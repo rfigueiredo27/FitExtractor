@@ -43,7 +43,7 @@ color: black;
 						<a class="btn btn-success btn-lg" href="insereTudo"><h1 style="color: white;">iniciar processo</h1></a>
 					</h1>
 					<h4>Total de Dados Extraídos:
-						<jsp:useBean id="total"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
+						<jsp:useBean id="total"	class="br.cefetrj.fitextractor.dao.ListarDao" />
 						<c:set var="items" value="${total.getTotal()}" />
 						<c:forEach var="lista" items="${items}"><strong>${lista.total_atividades}</strong></c:forEach>
 					</h4>		
@@ -52,11 +52,11 @@ color: black;
 			<div class="col-sm-6">
 				<h1 align="center" style="color: black; font-weight: 400;">Lista de Atividades extraídas por APP</h1>
 				<div class="text-center">
-					<jsp:useBean id="app"	class="br.cefetrj.fitextractor.dao.UrlDAO" />
+					<jsp:useBean id="app"	class="br.cefetrj.fitextractor.dao.ListarDao" />
 						<c:set var="items" value="${app.getApps()}" />
 						<c:forEach var="lista" items="${items}">
 						<strong>${lista.ultima_data}</strong>
-							<a class="btn btn-default active" href="ListaPosApp?app=${lista.id_app}">${lista.nome_app}</a>
+							<a class="btn btn-default active" href="listar_atividades?app=${lista.id_app}">${lista.nome_app}</a>
 						</c:forEach>
 				</div>
 			</div>
@@ -73,7 +73,7 @@ color: black;
 			<div class="col-sm-6">
 				<h1 align="center" style="color: black; font-weight: 400;">Análise de Desempenho</h1>
 				<div class="text-center">
-					<jsp:useBean id="atividades" class="br.cefetrj.fitextractor.dao.UrlDAO" />
+					<jsp:useBean id="atividades" class="br.cefetrj.fitextractor.dao.ListarDao" />
 						<c:set var="items" value="${atividades.getAtividades()}" />
 						<c:forEach var="lista" items="${items}">
 							<h3 style="margin-top: -10px;"><a class="btn btn-danger" href="desempenho.jsp?atividade=${lista.desc_atividade}">${lista.desc_atividade}</a></h3>

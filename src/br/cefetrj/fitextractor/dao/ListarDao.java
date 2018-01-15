@@ -13,13 +13,13 @@ import java.util.Calendar;
 import java.util.List;
 
 import br.cefetrj.fitextractor.connection.ConnectionFactory;
-import br.cefetrj.fitextractor.model.URL;
+import br.cefetrj.fitextractor.model.Atividade;
 
-public class UrlDAO {
+public class ListarDao {
 
-public List<URL> getAtivPos() throws DAOException{
+public List<Atividade> getAtivPos(){
 		Connection conexao = new ConnectionFactory().getConnection();
-		List<URL> lista_url = new ArrayList<URL>();
+		List<Atividade> lista_url = new ArrayList<Atividade>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
@@ -39,7 +39,7 @@ public List<URL> getAtivPos() throws DAOException{
 			rs = stmt.executeQuery();
 
 			while(rs.next()){
-				URL url = new URL();
+				Atividade url = new Atividade();
 				
 				url.setId_usuario(rs.getLong("id_usuario"));
 				url.setNome_usuario(rs.getString("nome_usuario"));
@@ -63,7 +63,7 @@ public List<URL> getAtivPos() throws DAOException{
 			}
 
 		}catch(SQLException e){
-			throw new DAOException("Ocorreu um erro no Sistema", e);
+			e.printStackTrace();
 		}finally{
 			try{
 				if(rs!=null){
@@ -94,9 +94,9 @@ public List<URL> getAtivPos() throws DAOException{
 		return (lista_url);
 	} // fim getListaUsuarios
 
-public List<URL> getAtivPosApp(String app) throws DAOException{
+public List<Atividade> getAtivPosApp(String app){
 		Connection conexao = new ConnectionFactory().getConnection();
-		List<URL> lista_url = new ArrayList<URL>();
+		List<Atividade> lista_url = new ArrayList<Atividade>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
@@ -109,7 +109,7 @@ public List<URL> getAtivPosApp(String app) throws DAOException{
 			rs = stmt.executeQuery();
 
 			while(rs.next()){
-				URL url = new URL();
+				Atividade url = new Atividade();
 				
 				url.setId_usuario(rs.getLong("id_usuario"));
 				url.setNome_usuario(rs.getString("nome_usuario"));
@@ -134,7 +134,7 @@ public List<URL> getAtivPosApp(String app) throws DAOException{
 			}
 
 		}catch(SQLException e){
-			throw new DAOException("Ocorreu um erro no Sistema", e);
+			e.printStackTrace();
 		}finally{
 			try{
 				if(rs!=null){
@@ -165,10 +165,10 @@ public List<URL> getAtivPosApp(String app) throws DAOException{
 		return (lista_url);
 	} // fim getListaUsuarios
 
-public List<URL> getTotal() throws DAOException{
+public List<Atividade> getTotal(){
 		
 		Connection conexao = new ConnectionFactory().getConnection();
-		List<URL> lista_url = new ArrayList<URL>();
+		List<Atividade> lista_url = new ArrayList<Atividade>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
@@ -179,7 +179,7 @@ public List<URL> getTotal() throws DAOException{
 			rs = stmt.executeQuery();
 
 			while(rs.next()){
-				URL url = new URL();
+				Atividade url = new Atividade();
 				
 				url.setTotal_atividades(rs.getLong("total_atividade"));
 				
@@ -187,7 +187,7 @@ public List<URL> getTotal() throws DAOException{
 			}
 
 		}catch(SQLException e){
-			throw new DAOException("Ocorreu um erro no Sistema", e);
+			e.printStackTrace();
 		}finally{
 			try{
 				if(rs!=null){
@@ -218,10 +218,10 @@ public List<URL> getTotal() throws DAOException{
 		return (lista_url);
 	} // fim
 	
-public List<URL> getTotalAtiv(String desc_atividade) throws DAOException{
+public List<Atividade> getTotalAtiv(String desc_atividade){
 	
 	Connection conexao = new ConnectionFactory().getConnection();
-	List<URL> lista_url = new ArrayList<URL>();
+	List<Atividade> lista_url = new ArrayList<Atividade>();
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
@@ -233,7 +233,7 @@ public List<URL> getTotalAtiv(String desc_atividade) throws DAOException{
 		rs = stmt.executeQuery();
 
 		while(rs.next()){
-			URL url = new URL();
+			Atividade url = new Atividade();
 			
 			url.setTotal_atividades(rs.getLong("total_atividade"));
 			
@@ -241,7 +241,7 @@ public List<URL> getTotalAtiv(String desc_atividade) throws DAOException{
 		}
 
 	}catch(SQLException e){
-		throw new DAOException("Ocorreu um erro no Sistema", e);
+		e.printStackTrace();
 	}finally{
 		try{
 			if(rs!=null){
@@ -272,10 +272,10 @@ public List<URL> getTotalAtiv(String desc_atividade) throws DAOException{
 	return (lista_url);
 } // fim
 
-public List<URL> getUltimaData() throws DAOException{
+public List<Atividade> getUltimaData(){
 		
 		Connection conexao = new ConnectionFactory().getConnection();
-		List<URL> lista_url = new ArrayList<URL>();
+		List<Atividade> lista_url = new ArrayList<Atividade>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
@@ -286,7 +286,7 @@ public List<URL> getUltimaData() throws DAOException{
 			rs = stmt.executeQuery();
 
 			while(rs.next()){
-				URL url = new URL();
+				Atividade url = new Atividade();
 				
 				url.setUltima_data(rs.getString("ultima_data"));
 				
@@ -294,7 +294,7 @@ public List<URL> getUltimaData() throws DAOException{
 			}
 
 		}catch(SQLException e){
-			throw new DAOException("Ocorreu um erro no Sistema", e);
+			e.printStackTrace();
 		}finally{
 			try{
 				if(rs!=null){
@@ -325,10 +325,10 @@ public List<URL> getUltimaData() throws DAOException{
 		return (lista_url);
 	} // fim
 	
-public List<URL> getApps() throws DAOException{
+public List<Atividade> getApps(){
 	
 	Connection conexao = new ConnectionFactory().getConnection();
-	List<URL> lista_url = new ArrayList<URL>();
+	List<Atividade> lista_url = new ArrayList<Atividade>();
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
@@ -339,7 +339,7 @@ public List<URL> getApps() throws DAOException{
 		rs = stmt.executeQuery();
 
 		while(rs.next()){
-			URL url = new URL();
+			Atividade url = new Atividade();
 			
 			url.setId_app(rs.getLong("id_app"));
 			url.setNome_app(rs.getString("nome_app"));
@@ -348,7 +348,7 @@ public List<URL> getApps() throws DAOException{
 		}
 
 	}catch(SQLException e){
-		throw new DAOException("Ocorreu um erro no Sistema", e);
+		e.printStackTrace();
 	}finally{
 		try{
 			if(rs!=null){
@@ -379,10 +379,10 @@ public List<URL> getApps() throws DAOException{
 	return (lista_url);
 	} // fim
 
-public List<URL> getAtividades() throws DAOException{
+public List<Atividade> getAtividades(){
 	
 	Connection conexao = new ConnectionFactory().getConnection();
-	List<URL> lista_url = new ArrayList<URL>();
+	List<Atividade> lista_url = new ArrayList<Atividade>();
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
@@ -393,7 +393,7 @@ public List<URL> getAtividades() throws DAOException{
 		rs = stmt.executeQuery();
 
 		while(rs.next()){
-			URL url = new URL();
+			Atividade url = new Atividade();
 			
 			url.setDesc_atividade(rs.getString("desc_atividade"));
 			
@@ -401,7 +401,7 @@ public List<URL> getAtividades() throws DAOException{
 		}
 
 	}catch(SQLException e){
-		throw new DAOException("Ocorreu um erro no Sistema", e);
+		e.printStackTrace();
 	}finally{
 		try{
 			if(rs!=null){
@@ -432,10 +432,10 @@ public List<URL> getAtividades() throws DAOException{
 	return (lista_url);
 	} // fim
 
-public List<URL> getTotalPorApps() throws DAOException{
+public List<Atividade> getTotalPorApps(){
 	
 	Connection conexao = new ConnectionFactory().getConnection();
-	List<URL> lista_url = new ArrayList<URL>();
+	List<Atividade> lista_url = new ArrayList<Atividade>();
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
@@ -446,7 +446,7 @@ public List<URL> getTotalPorApps() throws DAOException{
 		rs = stmt.executeQuery();
 
 		while(rs.next()){
-			URL url = new URL();
+			Atividade url = new Atividade();
 			
 			url.setTotal_atividades(rs.getLong("total"));
 			url.setNome_app(rs.getString("nome_app"));
@@ -455,7 +455,7 @@ public List<URL> getTotalPorApps() throws DAOException{
 		}
 
 	}catch(SQLException e){
-		throw new DAOException("Ocorreu um erro no Sistema", e);
+		e.printStackTrace();
 	}finally{
 		try{
 			if(rs!=null){
@@ -486,10 +486,10 @@ public List<URL> getTotalPorApps() throws DAOException{
 	return (lista_url);
 	} // fim
 
-public List<URL> getPercentHorario() throws DAOException{
+public List<Atividade> getPercentHorario(){
 	
 	Connection conexao = new ConnectionFactory().getConnection();
-	List<URL> lista_url = new ArrayList<URL>();
+	List<Atividade> lista_url = new ArrayList<Atividade>();
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
@@ -502,7 +502,7 @@ public List<URL> getPercentHorario() throws DAOException{
 		rs = stmt.executeQuery();
 
 		while(rs.next()){
-			URL url = new URL();
+			Atividade url = new Atividade();
 			
 			url.setPercentual(rs.getFloat("percent"));
 			url.setHorario(rs.getString("horario"));
@@ -511,7 +511,7 @@ public List<URL> getPercentHorario() throws DAOException{
 		}
 
 	}catch(SQLException e){
-		throw new DAOException("Ocorreu um erro no Sistema", e);
+		e.printStackTrace();
 	}finally{
 		try{
 			if(rs!=null){
@@ -542,10 +542,10 @@ public List<URL> getPercentHorario() throws DAOException{
 	return (lista_url);
 	} // fim
 
-public List<URL> getPercentPeriodo() throws DAOException{
+public List<Atividade> getPercentPeriodo(){
 	
 	Connection conexao = new ConnectionFactory().getConnection();
-	List<URL> lista_url = new ArrayList<URL>();
+	List<Atividade> lista_url = new ArrayList<Atividade>();
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
@@ -559,7 +559,7 @@ public List<URL> getPercentPeriodo() throws DAOException{
 		rs = stmt.executeQuery();
 
 		while(rs.next()){
-			URL url = new URL();
+			Atividade url = new Atividade();
 			
 			url.setDesc_periodo(rs.getString("desc_periodo"));
 			url.setPercentual(rs.getFloat("percent"));
@@ -568,7 +568,7 @@ public List<URL> getPercentPeriodo() throws DAOException{
 		}
 
 	}catch(SQLException e){
-		throw new DAOException("Ocorreu um erro no Sistema", e);
+		e.printStackTrace();
 	}finally{
 		try{
 			if(rs!=null){
@@ -599,10 +599,10 @@ public List<URL> getPercentPeriodo() throws DAOException{
 	return (lista_url);
 	} // fim
 
-public List<URL> getMediaDistancia(String desc_atividade) throws DAOException{
+public List<Atividade> getMediaDistancia(String desc_atividade){
 	
 	Connection conexao = new ConnectionFactory().getConnection();
-	List<URL> lista_url = new ArrayList<URL>();
+	List<Atividade> lista_url = new ArrayList<Atividade>();
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
@@ -616,7 +616,7 @@ public List<URL> getMediaDistancia(String desc_atividade) throws DAOException{
 		rs = stmt.executeQuery();
 
 		while(rs.next()){
-			URL url = new URL();
+			Atividade url = new Atividade();
 			
 			url.setDesc_periodo(rs.getString("desc_periodo"));
 			url.setKmedia(rs.getFloat("media"));
@@ -625,7 +625,7 @@ public List<URL> getMediaDistancia(String desc_atividade) throws DAOException{
 		}
 
 	}catch(SQLException e){
-		throw new DAOException("Ocorreu um erro no Sistema", e);
+		e.printStackTrace();
 	}finally{
 		try{
 			if(rs!=null){
@@ -656,10 +656,10 @@ public List<URL> getMediaDistancia(String desc_atividade) throws DAOException{
 	return (lista_url);
 	} // fim
 
-public List<URL> getMediaDuracao(String desc_atividade) throws DAOException{
+public List<Atividade> getMediaDuracao(String desc_atividade){
 	
 	Connection conexao = new ConnectionFactory().getConnection();
-	List<URL> lista_url = new ArrayList<URL>();
+	List<Atividade> lista_url = new ArrayList<Atividade>();
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
@@ -673,7 +673,7 @@ public List<URL> getMediaDuracao(String desc_atividade) throws DAOException{
 		rs = stmt.executeQuery();
 
 		while(rs.next()){
-			URL url = new URL();
+			Atividade url = new Atividade();
 			
 			url.setDesc_periodo(rs.getString("desc_periodo"));
 			url.setKmedia_tempo(rs.getString("media"));
@@ -682,7 +682,7 @@ public List<URL> getMediaDuracao(String desc_atividade) throws DAOException{
 		}
 
 	}catch(SQLException e){
-		throw new DAOException("Ocorreu um erro no Sistema", e);
+		e.printStackTrace();
 	}finally{
 		try{
 			if(rs!=null){
@@ -713,10 +713,10 @@ public List<URL> getMediaDuracao(String desc_atividade) throws DAOException{
 	return (lista_url);
 	} // fim
 
-public List<URL> getMediaCalorias(String desc_atividade) throws DAOException{
+public List<Atividade> getMediaCalorias(String desc_atividade){
 	
 	Connection conexao = new ConnectionFactory().getConnection();
-	List<URL> lista_url = new ArrayList<URL>();
+	List<Atividade> lista_url = new ArrayList<Atividade>();
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
@@ -730,7 +730,7 @@ public List<URL> getMediaCalorias(String desc_atividade) throws DAOException{
 		rs = stmt.executeQuery();
 
 		while(rs.next()){
-			URL url = new URL();
+			Atividade url = new Atividade();
 			
 			url.setDesc_periodo(rs.getString("desc_periodo"));
 			url.setKmedia(rs.getFloat("media"));
@@ -739,7 +739,7 @@ public List<URL> getMediaCalorias(String desc_atividade) throws DAOException{
 		}
 
 	}catch(SQLException e){
-		throw new DAOException("Ocorreu um erro no Sistema", e);
+		e.printStackTrace();
 	}finally{
 		try{
 			if(rs!=null){
@@ -770,10 +770,10 @@ public List<URL> getMediaCalorias(String desc_atividade) throws DAOException{
 	return (lista_url);
 	} // fim
 
-public List<URL> getMediaVelocidadeMedia(String desc_atividade) throws DAOException{
+public List<Atividade> getMediaVelocidadeMedia(String desc_atividade){
 	
 	Connection conexao = new ConnectionFactory().getConnection();
-	List<URL> lista_url = new ArrayList<URL>();
+	List<Atividade> lista_url = new ArrayList<Atividade>();
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
@@ -787,7 +787,7 @@ public List<URL> getMediaVelocidadeMedia(String desc_atividade) throws DAOExcept
 		rs = stmt.executeQuery();
 
 		while(rs.next()){
-			URL url = new URL();
+			Atividade url = new Atividade();
 			
 			url.setDesc_periodo(rs.getString("desc_periodo"));
 			url.setKmedia(rs.getFloat("media"));
@@ -796,7 +796,7 @@ public List<URL> getMediaVelocidadeMedia(String desc_atividade) throws DAOExcept
 		}
 
 	}catch(SQLException e){
-		throw new DAOException("Ocorreu um erro no Sistema", e);
+		e.printStackTrace();
 	}finally{
 		try{
 			if(rs!=null){
@@ -826,10 +826,10 @@ public List<URL> getMediaVelocidadeMedia(String desc_atividade) throws DAOExcept
 	return (lista_url);
 	} // fim
 
-public List<URL> getMediaRitmo(String desc_atividade) throws DAOException{
+public List<Atividade> getMediaRitmo(String desc_atividade){
 	
 	Connection conexao = new ConnectionFactory().getConnection();
-	List<URL> lista_url = new ArrayList<URL>();
+	List<Atividade> lista_url = new ArrayList<Atividade>();
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
@@ -843,7 +843,7 @@ public List<URL> getMediaRitmo(String desc_atividade) throws DAOException{
 		rs = stmt.executeQuery();
 
 		while(rs.next()){
-			URL url = new URL();
+			Atividade url = new Atividade();
 			
 			url.setDesc_periodo(rs.getString("desc_periodo"));
 			url.setKmedia_tempo(rs.getString("media"));
@@ -852,7 +852,7 @@ public List<URL> getMediaRitmo(String desc_atividade) throws DAOException{
 		}
 
 	}catch(SQLException e){
-		throw new DAOException("Ocorreu um erro no Sistema", e);
+		e.printStackTrace();
 	}finally{
 		try{
 			if(rs!=null){

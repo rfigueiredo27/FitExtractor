@@ -17,13 +17,13 @@ import br.cefetrj.fitextractor.model.Atividade;
  * Servlet implementation class ListaPolarController
  */
 @WebServlet(name = "ListaDetalhada", urlPatterns = { "/detalhes" })
-public class ListaDetalhadaController extends HttpServlet {
+public class AtividadeDetalhadaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ListaDetalhadaController() {
+	public AtividadeDetalhadaController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -54,15 +54,15 @@ public class ListaDetalhadaController extends HttpServlet {
 		pf.setNome_usuario(nome_usuario);
 		pf.setId_app(id_app);
 		pf.setNome_app(nome_app);
-		pf.setId_atividade_fitrank(id_atividade_fitrank);
-		pf.setTipo_atividade(tipo_atividade);
-		pf.setData_atividade(data_atividade);
-		pf.setHora_atividade(hora);
+		pf.setId_atividade(id_atividade_fitrank);
+		pf.setDesc_atividade(tipo_atividade);
+		pf.setData_publicacao(data_atividade);
+		pf.setHorario(hora);
 		pf.setDuracao(duracao);
 		pf.setCalorias(calorias);
 		pf.setRitmo_medio(ritmo_medio);
 		pf.setVelocidade_media(velocidade_media);
-		pf.setDistancia(distancia);
+		pf.setDistancia_percorrida(distancia);
 		
 		tabela.add(pf);
 		

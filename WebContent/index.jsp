@@ -13,6 +13,7 @@
 <link href="css/main.css" rel="stylesheet">
 <link href="css/animate.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
+<script src="js/load.js" type="text/javascript"></script>
 <style>
 .linha-vertical {
 	height: 450px; /*Altura da linha*/
@@ -28,7 +29,7 @@ color: black;
 </style>
 </head>
 <body>	
-	<div class="container">
+	<div class="container" id="conteudo">
 		<div class="row">
 			<div align="center">
 				<img class="img-responsive" src="images/twit.png" alt="twit">
@@ -51,7 +52,7 @@ color: black;
 			</div>
 			<div class="col-sm-6">
 				<h1 align="center" style="color: black; font-weight: 400;">Lista de Atividades extraídas por APP</h1>
-				<div class="text-center">
+				<div class="text-center" >
 					<jsp:useBean id="app"	class="br.cefetrj.fitextractor.dao.ListarDao" />
 						<c:set var="items" value="${app.getApps()}" />
 						<c:forEach var="lista" items="${items}">
@@ -76,7 +77,7 @@ color: black;
 					<jsp:useBean id="atividades" class="br.cefetrj.fitextractor.dao.ListarDao" />
 						<c:set var="items" value="${atividades.getAtividades()}" />
 						<c:forEach var="lista" items="${items}">
-							<h3 style="margin-top: -10px;"><a class="btn btn-danger" href="desempenho.jsp?atividade=${lista.desc_atividade}">${lista.desc_atividade}</a></h3>
+							<h3 style="margin-top: -10px;"><a class="btn btn-danger" href="javascript:loading()"desempenho.jsp?atividade=${lista.desc_atividade}">${lista.desc_atividade}</a></h3>
 						</c:forEach>
 				</div>
 			</div>
@@ -90,6 +91,8 @@ color: black;
 	<script type="text/javascript" src="js/jquery.scrollTo.js"></script>
 	<script type="text/javascript" src="js/jquery.nav.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	
+	
 
 </body>
 </html>

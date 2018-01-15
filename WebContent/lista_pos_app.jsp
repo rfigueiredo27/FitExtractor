@@ -8,8 +8,47 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name='viewport' content='width=device-width, initial-scale=1'/>
+<script src="js/load.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css"	href="DataTable/css/jquery.dataTables.css">
 <script type="text/javascript" language="javascript" src="DataTable/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+
+$(document)
+.ready(
+		function tabela_dinamica () {
+			$("#tabela")
+			.DataTable(
+					{
+						"oLanguage": {
+							"sEmptyTable": "Nenhum registro encontrado",
+						    "sInfo": "Mostrando de _START_ at\u00e9 _END_ de _TOTAL_ registros",
+						    "sInfoEmpty": "Mostrando 0 at\u00e9 0 de 0 registros",
+						    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+						    "sInfoPostFix": "",
+						    "sInfoThousands": ".",
+						    "sLengthMenu": "Exibir _MENU_ Resultados por p\u00e1gina",
+						    "sLoadingRecords": "Carregando...",
+						    "sProcessing": "Processando...",
+						    "sZeroRecords": "Nenhum registro encontrado",
+						    "sSearch": "Filtro",
+						    "oPaginate": {
+						        "sNext": "Pr\u00f3ximo",
+						        "sPrevious": "Anterior",
+						        "sFirst": "Primeiro",
+						        "sLast": "\u00daltimo"
+							}
+						},
+
+						"order": [[ 0, "desc" ]],
+
+					});
+			$( "#load" ).remove();
+			$( "#conteudo" ).toggleClass( "aparece" );
+			
+		});
+
+
+</script>
 <title>Pós Processamento</title>
 <style>
 .linha-vertical {
@@ -23,11 +62,20 @@
 h1, h1, h2, h4, h5, body{
 color: black;
 }
+
+.esconde{
+	
+	visibility: hidden;
+}
+.aparece{
+
+	visibility: visible;
+}
 </style>
 </head>
 <body>
-	
-	<div class="container">
+	<div id="load"><center><img src="images/loader.gif"></center></div>
+	<div class="container esconde" id="conteudo" >
 		<div class="row">
 			<h2>Lista de Atividades que já foram extraídas</h2>
 
@@ -71,39 +119,6 @@ color: black;
 	<a class="btn btn-primary" href="index.jsp" style="margin-top: -5px;">Voltar a Página Inicial</a>
 	<c:import url="rodape.jsp" />
 
-<script type="text/javascript">
-$(document)
-.ready(
-		function tabela_dinamica () {
-			$("#tabela")
-			.DataTable(
-					{
-						"oLanguage": {
-							"sEmptyTable": "Nenhum registro encontrado",
-						    "sInfo": "Mostrando de _START_ at\u00e9 _END_ de _TOTAL_ registros",
-						    "sInfoEmpty": "Mostrando 0 at\u00e9 0 de 0 registros",
-						    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
-						    "sInfoPostFix": "",
-						    "sInfoThousands": ".",
-						    "sLengthMenu": "Exibir _MENU_ Resultados por p\u00e1gina",
-						    "sLoadingRecords": "Carregando...",
-						    "sProcessing": "Processando...",
-						    "sZeroRecords": "Nenhum registro encontrado",
-						    "sSearch": "Filtro",
-						    "oPaginate": {
-						        "sNext": "Pr\u00f3ximo",
-						        "sPrevious": "Anterior",
-						        "sFirst": "Primeiro",
-						        "sLast": "\u00daltimo"
-							}
-						},
 
-						"order": [[ 0, "desc" ]],
-
-					});
-		});
-
-
-</script>
 
 </body>

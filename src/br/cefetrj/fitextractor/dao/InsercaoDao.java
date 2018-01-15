@@ -13,7 +13,7 @@ public class InsercaoDao {
 	
 	public void insereTudo(){
 		Connection conexao = new ConnectionFactory().getConnection();
-		PreparedStatement stmt = null;
+		
 		CallableStatement cs = null;
 		
 		String sql = "CALL `fitrank`.`inserir_tudo`(); ";

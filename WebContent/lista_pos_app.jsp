@@ -19,6 +19,8 @@ $(document)
 			$("#tabela")
 			.DataTable(
 					{
+						"scrollX": true,
+						
 						"oLanguage": {
 							"sEmptyTable": "Nenhum registro encontrado",
 						    "sInfo": "Mostrando de _START_ at\u00e9 _END_ de _TOTAL_ registros",
@@ -38,6 +40,8 @@ $(document)
 						        "sLast": "\u00daltimo"
 							}
 						},
+						
+						responsive: true,
 
 						"order": [[ 0, "desc" ]],
 
@@ -83,12 +87,11 @@ color: black;
 			
 			<div class="dataTables_wrapper">
 				<table id="tabela"
-					class="tableIndexLista table-striped table-bordered table-hover">
+					class="tableIndexLista table-striped table-bordered table-hover" style="width: 100%;">
 					<thead>
 						<tr>
 							<th>Data</th>
 							<th>Nome Usuário</th>
-							<th>NOME_APP</th>
 							<th>Modalidade</th>
 							<th></th>
 						</tr>
@@ -99,7 +102,6 @@ color: black;
 							<tr>
 								<td>${atividade.data_publicacao}</td>
 								<td>${atividade.nome_usuario}</td>
-								<td>${atividade.nome_app}</td>
 								<td>${atividade.modalidade}</td>
 								<td align="center"><a class='btn btn-success' href="detalhes?url=${atividade.url_atividade }&nome=${atividade.nome_usuario }&id_usu=${atividade.id_usuario}
 								&id_app=${atividade.id_app}&nome_app=${atividade.nome_app}&modalidade=${atividade.modalidade}&id_atividade=${atividade.id_atividade}

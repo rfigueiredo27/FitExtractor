@@ -77,7 +77,7 @@ color: black;
 					<jsp:useBean id="atividades" class="br.cefetrj.fitextractor.dao.ListarDao" />
 						<c:set var="items" value="${atividades.getAtividades()}" />
 						<c:forEach var="lista" items="${items}">
-							<h3 style="margin-top: -10px;"><a class="btn btn-danger" href="javascript:loading()"desempenho.jsp?atividade=${lista.desc_atividade}">${lista.desc_atividade}</a></h3>
+							<h3 style="margin-top: -10px;"><a class="btn btn-danger" href="desempenho.jsp?atividade=${lista.desc_atividade}">${lista.desc_atividade}</a></h3>
 						</c:forEach>
 				</div>
 			</div>

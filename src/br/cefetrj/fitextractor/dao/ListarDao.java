@@ -17,82 +17,6 @@ import br.cefetrj.fitextractor.model.Atividade;
 
 public class ListarDao {
 
-public List<Atividade> getAtivPos(){
-		Connection conexao = new ConnectionFactory().getConnection();
-		List<Atividade> lista_url = new ArrayList<Atividade>();
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-
-		//String = "SELECT * FROM lista_url where usuario like 'JR%' ";
-
-		String sql = 	"INSERT INTO atividades (id_usuario,nome_usuario, id_app, nome_app, id_atividade_fitrank," 
-						+"modalidade, desc_atividade, duracao_decimal, distancia, duracao, velocidade_media,"
-						+"ritmo_medio, calorias, data_atividade, horario, id_periodo, desc_periodo, url"
-						+")"
-						+"SELECT id_usuario,nome_usuario, id_app, nome_app, id_atividade," 
-						+"modalidade, desc_atividade, duracao_decimal, distancia, duracao, velocidade_media,"
-						+"ritmo_medio, caloria_aproximada, data_publicacao, horario, id_periodo, desc_periodo, url_atividade"
-						+"FROM bd_atividades order by data_publicacao; ";
-
-		try{
-			stmt = (PreparedStatement) conexao.prepareStatement(sql);			
-			rs = stmt.executeQuery();
-
-			while(rs.next()){
-				Atividade url = new Atividade();
-				
-				url.setId_usuario(rs.getLong("id_usuario"));
-				url.setNome_usuario(rs.getString("nome_usuario"));
-				url.setId_app(rs.getLong("id_app"));
-				url.setNome_app(rs.getString("nome_app"));
-				url.setId_atividade(rs.getLong("id_atividade"));
-				url.setModalidade(rs.getString("desc_atividade"));
-				url.setDesc_atividade(rs.getString("desc_atividade"));
-				url.setDuracao_decimal(rs.getFloat("duracao_decimal"));
-				url.setDuracao(rs.getString("duracao"));
-				url.setVelocidade_media(rs.getFloat("velocidade_media"));
-				url.setRitmo_medio(rs.getString("ritmo_medio"));
-				url.setCalorias(rs.getInt("calorias"));
-				url.setData_publicacao(rs.getString("data_atividade"));
-				url.setHorario(rs.getString("horario"));
-				url.setId_periodo(rs.getInt("id_periodo"));
-				url.setDesc_periodo(rs.getString("desc_periodo"));
-				url.setUrl_atividade(rs.getString("url"));
-				
-				lista_url.add(url);
-			}
-
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			try{
-				if(rs!=null){
-					rs.close();
-				}
-			}catch(SQLException e){
-				e.printStackTrace();
-			}finally{
-				try{
-					if(stmt!=null){
-						stmt.close();
-					}
-				}catch(SQLException e){
-					e.printStackTrace();
-				}finally{
-					try{
-						if(conexao!=null){
-							conexao.close();
-						}
-					}catch(SQLException e){
-						e.printStackTrace();
-					}
-				}
-			}
-		}
-
-
-		return (lista_url);
-	} // fim getListaUsuarios
 
 public List<Atividade> getAtivPosApp(String app){
 		Connection conexao = new ConnectionFactory().getConnection();
@@ -100,8 +24,10 @@ public List<Atividade> getAtivPosApp(String app){
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select id_usuario, nome_usuario, id_app, nome_app, modalidade, id_atividade, desc_atividade, duracao_decimal, duracao, "
-				+ "velocidade_media, ritmo_medio, calorias, data_atividade, horario, id_periodo, desc_periodo, url, distancia from atividades where id_app = ? ";
+		String sql = "SELECT id_usuario,nome_usuario, id_app, nome_app, id_atividade_fitrank, "
+				+ "modalidade, desc_atividade, duracao_decimal, distancia, duracao, velocidade_media, "
+				+ "ritmo_medio, caloria_aproximada, data_publicacao, horario, desc_periodo, url_atividade "
+				+ "FROM atividades where id_app = ? ";
 
 		try{
 			stmt = conexao.prepareStatement(sql);
@@ -115,20 +41,19 @@ public List<Atividade> getAtivPosApp(String app){
 				url.setNome_usuario(rs.getString("nome_usuario"));
 				url.setId_app(rs.getLong("id_app"));
 				url.setNome_app(rs.getString("nome_app"));
-				url.setId_atividade(rs.getLong("id_atividade"));
-				url.setModalidade(rs.getString("desc_atividade"));
+				url.setId_atividade(rs.getLong("id_atividade_fitrank"));
+				url.setModalidade(rs.getString("modalidade"));
 				url.setDesc_atividade(rs.getString("desc_atividade"));
 				url.setDuracao_decimal(rs.getFloat("duracao_decimal"));
+				url.setDistancia_percorrida(rs.getFloat("distancia"));
 				url.setDuracao(rs.getString("duracao"));
 				url.setVelocidade_media(rs.getFloat("velocidade_media"));
 				url.setRitmo_medio(rs.getString("ritmo_medio"));
-				url.setCalorias(rs.getInt("calorias"));
-				url.setData_publicacao(rs.getString("data_atividade"));
+				url.setCalorias(rs.getInt("caloria_aproximada"));
+				url.setData_publicacao(rs.getString("data_publicacao"));
 				url.setHorario(rs.getString("horario"));
-				url.setId_periodo(rs.getInt("id_periodo"));
 				url.setDesc_periodo(rs.getString("desc_periodo"));
-				url.setUrl_atividade(rs.getString("url"));
-				url.setDistancia_percorrida(rs.getFloat("distancia"));
+				url.setUrl_atividade(rs.getString("url_atividade"));
 				
 				lista_url.add(url);
 			}
@@ -172,7 +97,7 @@ public List<Atividade> getTotal(){
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT count(id_atividade) as total_atividade FROM fitrank.atividades ";
+		String sql = "SELECT count(*) as total_atividade FROM fitrank.atividades ";
 
 		try{
 			stmt = conexao.prepareStatement(sql);
@@ -225,7 +150,7 @@ public List<Atividade> getTotalAtiv(String desc_atividade){
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
-	String sql = "SELECT count(id_atividade) as total_atividade FROM fitrank.atividades where desc_atividade = ? ";
+	String sql = "SELECT count(*) as total_atividade FROM fitrank.atividades where desc_atividade = ? ";
 
 	try{
 		stmt = conexao.prepareStatement(sql);
@@ -324,7 +249,7 @@ public List<Atividade> getUltimaData(){
 
 		return (lista_url);
 	} // fim
-	
+
 public List<Atividade> getApps(){
 	
 	Connection conexao = new ConnectionFactory().getConnection();
@@ -342,6 +267,60 @@ public List<Atividade> getApps(){
 			Atividade url = new Atividade();
 			
 			url.setId_app(rs.getLong("id_app"));
+			url.setNome_app(rs.getString("nome_app"));
+			
+			lista_url.add(url);
+		}
+
+	}catch(SQLException e){
+		e.printStackTrace();
+	}finally{
+		try{
+			if(rs!=null){
+				rs.close();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null){
+					stmt.close();
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(conexao!=null){
+						conexao.close();
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+
+	return (lista_url);
+	} // fim
+
+
+public List<Atividade> getApp(Long id_app){
+	
+	Connection conexao = new ConnectionFactory().getConnection();
+	List<Atividade> lista_url = new ArrayList<Atividade>();
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+	
+	String sql = "select nome_app from fitrank.atividades where id_app = ? ";
+
+	try{
+		stmt = conexao.prepareStatement(sql);
+		stmt.setLong(1, id_app);
+		rs = stmt.executeQuery();
+
+		if(rs.next()){
+			Atividade url = new Atividade();
 			url.setNome_app(rs.getString("nome_app"));
 			
 			lista_url.add(url);
@@ -439,7 +418,7 @@ public List<Atividade> getTotalPorApps(){
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
-	String sql = "select count(id_atividade) as total, nome_app from fitrank.atividades group by nome_app order by count(id_atividade) desc ";
+	String sql = "select count(*) as total, nome_app from fitrank.atividades group by nome_app order by count(*) desc ";
 
 	try{
 		stmt = conexao.prepareStatement(sql);
@@ -720,9 +699,9 @@ public List<Atividade> getMediaCalorias(String desc_atividade){
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
-	String sql = "select round(avg(calorias), 2) as media, desc_periodo, desc_atividade from fitrank.atividades "
+	String sql = "select round(avg(caloria_aproximada), 2) as media, desc_periodo, desc_atividade from fitrank.atividades "
 			+ "where horario is not null and horario not in ('00:00:00', '01:00:00') "
-			+ "and desc_atividade = ? group by desc_periodo, desc_atividade order by round(avg(calorias), 2) desc ";
+			+ "and desc_atividade = ? group by desc_periodo, desc_atividade order by round(avg(caloria_aproximada), 2) desc ";
 
 	try{
 		stmt = conexao.prepareStatement(sql);

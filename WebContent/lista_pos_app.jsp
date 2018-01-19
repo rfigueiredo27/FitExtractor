@@ -81,7 +81,11 @@ color: black;
 	<div id="load"><center><img src="images/loader.gif"></center></div>
 	<div class="container esconde" id="conteudo" >
 		<div class="row">
-			<h2>Lista de Atividades que já foram extraídas</h2>
+			<h2>Lista de Atividades do APP  
+			<jsp:useBean id="app"	class="br.cefetrj.fitextractor.dao.ListarDao" />
+						<c:set var="items" value="${app.getApp(param.app)}" />
+						<c:forEach var="lista" items="${items}"> <strong>${lista.nome_app}</strong></c:forEach>
+			</h2>
 
 			<br>
 			
@@ -102,9 +106,9 @@ color: black;
 							<tr>
 								<td>${atividade.data_publicacao}</td>
 								<td>${atividade.nome_usuario}</td>
-								<td>${atividade.modalidade}</td>
+								<td>${atividade.desc_atividade}</td>
 								<td align="center"><a class='btn btn-success' href="detalhes?url=${atividade.url_atividade }&nome=${atividade.nome_usuario }&id_usu=${atividade.id_usuario}
-								&id_app=${atividade.id_app}&nome_app=${atividade.nome_app}&modalidade=${atividade.modalidade}&id_atividade=${atividade.id_atividade}
+								&id_app=${atividade.id_app}&nome_app=${atividade.nome_app}&modalidade=${atividade.desc_atividade}&id_atividade=${atividade.id_atividade}
 								&distancia=${atividade.distancia_percorrida}&duracao=${atividade.duracao}&data=${atividade.data_publicacao}&hora=${atividade.horario}&calorias=${atividade.calorias}
 								&ritmo=${atividade.ritmo_medio}&velocidade=${atividade.velocidade_media}">Detalhes</a></td>
 							</tr>

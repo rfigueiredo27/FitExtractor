@@ -85,6 +85,32 @@ color: black;
 					</tbody>
 				</table>
 				</div>
+				<h3>Total de Atividades por Gênero</h3>
+				<div class="dataTables_wrapper" style="width: 50%;">
+				<table id="tabela4" class="table-striped table-bordered table-hover" style="width: 100%">
+					<jsp:useBean id="total_genero"	class="br.cefetrj.fitextractor.dao.ListarDao" />
+					<c:set var="items" value="${total_genero.getAtivGenero()}" />
+					<thead>
+						<tr>
+							<th>Posição</th>
+							<th>Gênero</th>
+							<th>Total</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+					<%int i3=1; %>
+					<c:forEach var="lista" items="${items}">
+						<tr>
+							<td><%=i3+"º" %></td>
+							<td>${lista.genero}</td>
+							<td>${lista.total_atividades}</td>
+						<tr>
+						<% i3++; %>
+					</c:forEach>
+					</tbody>
+				</table>
+				</div>
 			<hr>
 		</div>
 	</div>

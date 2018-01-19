@@ -28,10 +28,24 @@ public class Atividade {
 	private Float percentual;
 	private Float kmedia;
 	private String kmedia_tempo;
+	private String genero;
+	private String data_nascimento;
 	
 	
 	
 
+	public String getGenero() {
+		return genero;
+	}
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+	public String getData_nascimento() {
+		return data_nascimento;
+	}
+	public void setData_nascimento(String data_nascimento) {
+		this.data_nascimento = data_nascimento;
+	}
 	public String getKmedia_tempo() {
 		return kmedia_tempo;
 	}

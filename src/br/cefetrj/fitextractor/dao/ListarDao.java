@@ -304,7 +304,6 @@ public List<Atividade> getApps(){
 	return (lista_url);
 	} // fim
 
-
 public List<Atividade> getApp(Long id_app){
 	
 	Connection conexao = new ConnectionFactory().getConnection();
@@ -857,6 +856,58 @@ public List<Atividade> getMediaRitmo(String desc_atividade){
 			}
 		}
 	}
+
+	return (lista_url);
+	} // fim
+
+public List<Atividade> getAtivGenero(){
+	Connection conexao = new ConnectionFactory().getConnection();
+	List<Atividade> lista_url = new ArrayList<Atividade>();
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+	
+	String sql = "select count(*) as total, genero from fitrank.atividades group by genero order by count(*) desc";
+
+	try{
+		stmt = conexao.prepareStatement(sql);
+		rs = stmt.executeQuery();
+
+		while(rs.next()){
+			Atividade url = new Atividade();
+			
+			url.setTotal_atividades(rs.getLong("total"));
+			url.setGenero(rs.getString("genero"));
+			lista_url.add(url);
+		}
+
+	}catch(SQLException e){
+		e.printStackTrace();
+	}finally{
+		try{
+			if(rs!=null){
+				rs.close();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null){
+					stmt.close();
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(conexao!=null){
+						conexao.close();
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
 
 	return (lista_url);
 	} // fim

@@ -38,6 +38,7 @@ color: black;
 			</h4>
 			<hr>
 			<h2>Análise das Médias de Parâmetros separados por Períodos</h2>
+			<p>Leva-se em consideração o horário em que a atividade é <strong>iniciada</strong> nos períodos a seguir:</p>
 			<h4>Manhã: 06:00 - 11:59</h4>
 			<h4>Tarde: 12:00 - 17:59</h4>
 			<h4>Noite: 18:00 - 23:59</h4>

@@ -89,7 +89,7 @@ color: black;
 				</table>
 				</div>
 				<div class="col-sm-7">
-				<h3><strong>Percentual de Atividades por Faixa Etária</strong></h3>
+				<h3><strong>Percentual de Atividades por Faixa Etária (Global)</strong></h3>
 				<table id="tabela4" class="table-striped table-bordered table-hover" style="width: 100%">
 					<jsp:useBean id="faixa"	class="br.cefetrj.fitextractor.dao.ListarDao" />
 					<c:set var="items" value="${faixa.getTotalFaixa()}" />
@@ -115,7 +115,7 @@ color: black;
 				</div>
 				<hr class="my-4">
 				<div class="col-sm-12">
-				<h3> <strong>Percentual de Atividades por Faixa Etária separados por Modalidade </strong></h3>
+				<h3> <strong>Percentual de Atividades, divididos em Faixa Etária e separados por Modalidade </strong></h3>
 				</div>
 				<div class="col-sm-4">
 				<h3>Corrida</h3>

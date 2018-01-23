@@ -979,15 +979,9 @@ public List<Atividade> getAtivGenero(){
 	
 	//System.out.println("Atividade: " +desc_atividade);
 	
-	String sql = "select case when idade < 20 then '0-20' " 
-					+"when idade between 21 and 30 then '21-30' "
-					+"when idade between 31 and 40 then '31-40' "
-					+"when idade between 41 and 50 then '41-50' " 
-					+"when idade between 51 and 60 then '51-60' "
-					+"when idade > 60 then '61 ou mais'"
-					+"end as faixa_etaria, "
-					+"round(count(*) / (select count(a.idade) from atividades a where a.idade is not null and a.desc_atividade = ?) * 100, 1) as percentual_total "
-					+"from atividades where idade is not null and desc_atividade = ? "
+	String sql = "select faixa_etaria, "
+					+"round(count(*) / (select count(a.idade) from atividades a where a.faixa_etaria is not null and a.desc_atividade = ?) * 100, 1) as percentual_total "
+					+"from atividades where faixa_etaria is not null and desc_atividade = ? "
 					+"group by faixa_etaria order by percentual_total desc " ;
 
 	try{
@@ -1041,17 +1035,11 @@ public List<Atividade> getAtivGenero(){
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select case when idade < 20 then '0-20' "
-					+"	when idade between 21 and 30 then '21-30' "
-					+"	when idade between 31 and 40 then '31-40' "
-					+"	when idade between 41 and 50 then '41-50' "
-					+"	when idade between 51 and 60 then '51-60' "
-					+"	when idade > 60 then '61 ou mais' "
-					+"	end as faixa_etaria, "
-					+"	round(count(*) / (select count(a.idade) from atividades a where a.idade is not null) * 100, 1) as percentual_total "
-					+"	from atividades where idade is not null "
+		String sql = "select  faixa_etaria, "
+					+"	round(count(*) / (select count(a.idade) from atividades a where a.faixa_etaria is not null) * 100, 1) as percentual_total "
+					+"	from atividades where faixa_etaria is not null "
 					+"	group by faixa_etaria "
-					+"  order by round(count(*) / (select count(a.idade) from atividades a where a.idade is not null) * 100, 1) desc";
+					+"  order by faixa_etaria desc";
 
 		try{
 			stmt = conexao.prepareStatement(sql);
@@ -1105,16 +1093,10 @@ public List<Atividade> getAtivGenero(){
 		
 		//System.out.println("Atividade: " +desc_atividade);
 		
-		String sql = "select case when idade < 20 then '0-20' "
-						+"when idade between 21 and 30 then '21-30' "
-						+"when idade between 31 and 40 then '31-40' "
-						+"when idade between 41 and 50 then '41-50' "
-						+"when idade between 51 and 60 then '51-60' "
-						+"when idade > 60 then '61 ou mais' "
-						+"end as faixa_etaria, "
-						+"round(count(*) / (select count(a.idade) from atividades a where a.idade is "
+		String sql = "select faixa_etaria, "
+						+"round(count(*) / (select count(a.idade) from atividades a where a.faixa_etaria is "
 						+ "not null and a.desc_atividade = ? and a.genero = ?) * 100, 1) as percentual_total "
-						+"from atividades where idade is not null and desc_atividade = ? and genero = ? "
+						+"from atividades where faixa_etaria is not null and desc_atividade = ? and genero = ? "
 						+"group by faixa_etaria order by percentual_total desc";
 
 		try{

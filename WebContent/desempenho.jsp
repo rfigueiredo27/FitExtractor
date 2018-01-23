@@ -82,7 +82,7 @@ color: black;
 					<%int i23=1; %>
 					<c:forEach var="lista" items="${items}">
 						<tr>
-							<td><%=i22+"º" %></td>
+							<td><%=i23+"º" %></td>
 							<td>${lista.desc_periodo}</td>
 							<td>${lista.percentual}%</td>
 						<tr>

@@ -73,12 +73,18 @@ color: black;
 			</div>
 			<div class="col-sm-6">
 				<h1 align="center" style="color: black; font-weight: 400;">Análise de Desempenho</h1>
-				<div class="text-center">
+				<div class="col-sm-6 text-center">
+					<h3>Análise dos Período Separados por Modalidade</h3>
 					<jsp:useBean id="atividades" class="br.cefetrj.fitextractor.dao.ListarDao" />
 						<c:set var="items" value="${atividades.getAtividades()}" />
 						<c:forEach var="lista" items="${items}">
-							<h3 style="margin-top: -10px;"><a class="btn btn-danger" href="desempenho.jsp?atividade=${lista.desc_atividade}">${lista.desc_atividade}</a></h3>
+							<h4 style="margin-top: -10px;"><a class="btn btn-danger" href="desempenho.jsp?atividade=${lista.desc_atividade}">${lista.desc_atividade}</a>
+							</h4>
 						</c:forEach>
+				</div>
+				<div class="col-sm-6 text-center">
+					<h3>Análise por Gênero e Faixa Etária</h3>
+					<a class="btn btn-warning btn-lg" href="geral.jsp"><h1 style="color: white;">Acessar dados</h1></a>
 				</div>
 			</div>
 		</div>

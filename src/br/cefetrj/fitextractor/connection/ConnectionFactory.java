@@ -8,20 +8,20 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 
 	//fitrank banco produção
-//	private static final String URL_MYSQL= "jdbc:mysql://";
-//	private static final String IP = "albali.eic.cefet-rj.br:3306";
-//	private static final String NOME_BANCO = "fitrank";
-//	private static final String URL_DA_CONEXAO = URL_MYSQL + IP + "/" + NOME_BANCO;
-//	private static final String login = "fitrank";
-//	private static final String senha = "fitrank2015!";
-	
-	//fitrank banco desenvolvimento
 	private static final String URL_MYSQL= "jdbc:mysql://";
-	private static final String IP = "localhost:3306";
+	private static final String IP = "albali.eic.cefet-rj.br:3306";
 	private static final String NOME_BANCO = "fitrank";
 	private static final String URL_DA_CONEXAO = URL_MYSQL + IP + "/" + NOME_BANCO;
-	private static final String login = "root";
-	private static final String senha = "1234";
+	private static final String login = "fitrank";
+	private static final String senha = "fitrank2015!";
+	
+	//fitrank banco desenvolvimento
+//	private static final String URL_MYSQL= "jdbc:mysql://";
+//	private static final String IP = "localhost:3306";
+//	private static final String NOME_BANCO = "fitrank";
+//	private static final String URL_DA_CONEXAO = URL_MYSQL + IP + "/" + NOME_BANCO;
+//	private static final String login = "root";
+//	private static final String senha = "1234";
 	
 	public Connection getConnection(){
 				

@@ -44,6 +44,52 @@ color: black;
 			<h4>Madrugada: 00:00 - 05:59</h4>
 			</center>
 			<hr>
+			<h3>Percentual de Atividades por Período do Dia (Todas as atividades)</h3>
+			<table id="tabela3" class="table-striped table-bordered table-hover" style="width: 100%">
+					<jsp:useBean id="percent_hora"	class="br.cefetrj.fitextractor.dao.ListarDao" />
+					<c:set var="items" value="${percent_hora.getPercentPeriodo()}" />
+					<thead>
+						<tr>
+							<th>Posição</th>
+							<th>Período do Dia</th>
+							<th>Porcentagem (%)</th>
+						</tr>
+					</thead>
+					<tbody>
+					<%int i22=1; %>
+					<c:forEach var="lista" items="${items}">
+						<tr>
+							<td><%=i22+"º" %></td>
+							<td>${lista.desc_periodo}</td>
+							<td>${lista.percentual}%</td>
+						<tr>
+						<% i22++; %>
+					</c:forEach>
+					</tbody>
+			</table>
+			<h3>Percentual de Atividades por Período do Dia (${param.atividade})</h3>
+			<table id="tabela3" class="table-striped table-bordered table-hover" style="width: 100%">
+					<jsp:useBean id="percent_hora2"	class="br.cefetrj.fitextractor.dao.ListarDao" />
+					<c:set var="items" value="${percent_hora2.getPercentPeriodoAtiv(param.atividade)}" />
+					<thead>
+						<tr>
+							<th>Posição</th>
+							<th>Período do Dia</th>
+							<th>Porcentagem (%)</th>
+						</tr>
+					</thead>
+					<tbody>
+					<%int i23=1; %>
+					<c:forEach var="lista" items="${items}">
+						<tr>
+							<td><%=i22+"º" %></td>
+							<td>${lista.desc_periodo}</td>
+							<td>${lista.percentual}%</td>
+						<tr>
+						<% i23++; %>
+					</c:forEach>
+					</tbody>
+			</table>
 			<h3 align="center"><strong>Análise de Dados Exatos (Distância, Duração, Velocidade Média e Ritmo Médio)</strong></h3>
 			<hr>
 			<div class="col-sm-6">

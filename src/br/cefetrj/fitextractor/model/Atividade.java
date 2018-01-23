@@ -30,10 +30,51 @@ public class Atividade {
 	private String kmedia_tempo;
 	private String genero;
 	private String data_nascimento;
-	
+	private String faixa_etaria;
+	private Float distancia_media;
+	private String duracao_media;
+	private Float caloria_media;
+	private Float velocidade_media_media;
+	private Float ritmo_medio_media;
 	
 	
 
+	public Float getDistancia_media() {
+		return distancia_media;
+	}
+	public void setDistancia_media(Float distancia_media) {
+		this.distancia_media = distancia_media;
+	}
+	public String getDuracao_media() {
+		return duracao_media;
+	}
+	public void setDuracao_media(String duracao_media) {
+		this.duracao_media = duracao_media;
+	}
+	public Float getCaloria_media() {
+		return caloria_media;
+	}
+	public void setCaloria_media(Float caloria_media) {
+		this.caloria_media = caloria_media;
+	}
+	public Float getVelocidade_media_media() {
+		return velocidade_media_media;
+	}
+	public void setVelocidade_media_media(Float velocidade_media_media) {
+		this.velocidade_media_media = velocidade_media_media;
+	}
+	public Float getRitmo_medio_media() {
+		return ritmo_medio_media;
+	}
+	public void setRitmo_medio_media(Float ritmo_medio_media) {
+		this.ritmo_medio_media = ritmo_medio_media;
+	}
+	public String getFaixa_etaria() {
+		return faixa_etaria;
+	}
+	public void setFaixa_etaria(String faixa_etaria) {
+		this.faixa_etaria = faixa_etaria;
+	}
 	public String getGenero() {
 		return genero;
 	}

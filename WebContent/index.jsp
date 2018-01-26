@@ -64,7 +64,7 @@ color: black;
 		</div>
 		<div class="row">
 			<div class="col-sm-6">
-				<h1 align="center" style="color: black; font-weight: 400;">Estatísticas Gerais</h1>
+				<h1 align="center" style="color: black; font-weight: 400;">Análises Estatísticas</h1>
 				<div class="text-center carousel-inner center-block">
 					<h1 class="center">
 							<a class="btn btn-primary btn-lg" href="estatisticas.jsp"><h1 style="color: white;">Acessar dados</h1></a>
@@ -74,7 +74,7 @@ color: black;
 			<div class="col-sm-6">
 				<h1 align="center" style="color: black; font-weight: 400;">Análise de Desempenho</h1>
 				<div class="col-sm-6 text-center">
-					<h3>Análise dos Período Separados por Modalidade</h3>
+					<h3>Período X Modalidade</h3>
 					<jsp:useBean id="atividades" class="br.cefetrj.fitextractor.dao.ListarDao" />
 						<c:set var="items" value="${atividades.getAtividades()}" />
 						<c:forEach var="lista" items="${items}">
@@ -83,7 +83,7 @@ color: black;
 						</c:forEach>
 				</div>
 				<div class="col-sm-6 text-center">
-					<h3>Análise por Gênero e Faixa Etária</h3>
+					<h3>Gênero e Faixa Etária</h3>
 					<a class="btn btn-warning btn-lg" href="geral.jsp"><h1 style="color: white;">Acessar dados</h1></a>
 				</div>
 			</div>

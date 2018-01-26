@@ -53,7 +53,9 @@ color: black;
 						<tr>
 							<th>Posição</th>
 							<th>Período do Dia</th>
+							<th>Total</th>
 							<th>Porcentagem (%)</th>
+							
 						</tr>
 					</thead>
 					<tbody>
@@ -62,7 +64,9 @@ color: black;
 						<tr>
 							<td><%=i22+"º" %></td>
 							<td>${lista.desc_periodo}</td>
+							<td>${lista.total_atividades}</td>
 							<td>${lista.percentual}%</td>
+							
 						<tr>
 						<% i22++; %>
 					</c:forEach>
@@ -76,7 +80,9 @@ color: black;
 						<tr>
 							<th>Posição</th>
 							<th>Período do Dia</th>
+							<th>Total</th>
 							<th>Porcentagem (%)</th>
+							
 						</tr>
 					</thead>
 					<tbody>
@@ -85,7 +91,9 @@ color: black;
 						<tr>
 							<td><%=i23+"º" %></td>
 							<td>${lista.desc_periodo}</td>
+							<td>${lista.total_atividades}</td>
 							<td>${lista.percentual}%</td>
+							
 						<tr>
 						<% i23++; %>
 					</c:forEach>

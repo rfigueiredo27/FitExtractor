@@ -417,7 +417,8 @@ public List<Atividade> getTotalPorApps(){
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
-	String sql = "select count(*) as total, nome_app from fitrank.atividades group by nome_app order by count(*) desc ";
+	String sql = "select count(*) as total, nome_app, round(count(*) / (select count(a.id_atividade_fitrank) from atividades a) * 100, 2) as percent "
+			+ "from fitrank.atividades group by nome_app order by count(*) desc ";
 
 	try{
 		stmt = conexao.prepareStatement(sql);
@@ -428,6 +429,7 @@ public List<Atividade> getTotalPorApps(){
 			
 			url.setTotal_atividades(rs.getLong("total"));
 			url.setNome_app(rs.getString("nome_app"));
+			url.setPercentual(rs.getFloat("percent"));
 			
 			lista_url.add(url);
 		}
@@ -528,7 +530,10 @@ public List<Atividade> getPercentPeriodo(){
 	ResultSet rs = null;
 	
 	String sql = "select desc_periodo, round(count(*) / (select count(desc_periodo) from fitrank.atividades "
-			+ "where horario is not null and horario not in ('00:00:00', '01:00:00')) * 100, 2) percent "
+			+ "where horario is not null and horario not in ('00:00:00', '01:00:00')) * 100, 2) percent, "
+			+ "round((count(*) / (select count(desc_periodo) from fitrank.atividades "
+			+ "where horario is not null and horario not in ('00:00:00', '01:00:00'))) * "
+			+ "(select count(*) from atividades b),0) as total "
 			+ "from fitrank.atividades where horario is not null and horario not in ('00:00:00', '01:00:00') "
 			+ "group by desc_periodo order by 2 desc; ";
 
@@ -541,6 +546,7 @@ public List<Atividade> getPercentPeriodo(){
 			
 			url.setDesc_periodo(rs.getString("desc_periodo"));
 			url.setPercentual(rs.getFloat("percent"));
+			url.setTotal_atividades(rs.getLong("total"));
 			
 			lista_url.add(url);
 		}
@@ -585,7 +591,10 @@ public List<Atividade> getPercentPeriodoAtiv(String atividade){
 	ResultSet rs = null;
 	
 	String sql = "select desc_periodo, round(count(*) / (select count(desc_periodo) from fitrank.atividades "
-			+ "where horario is not null and horario not in ('00:00:00', '01:00:00')) * 100, 2) percent "
+			+ "where horario is not null and horario not in ('00:00:00', '01:00:00')) * 100, 2) percent, "
+			+ "round((count(*) / (select count(desc_periodo) from fitrank.atividades "
+			+ "where horario is not null and horario not in ('00:00:00', '01:00:00') and desc_atividade = ?)) * "
+			+ "(select count(*) from atividades b where b.desc_atividade = ?),0) as total "
 			+ "from fitrank.atividades where horario is not null and horario not in ('00:00:00', '01:00:00') "
 			+ "and desc_atividade = ? "
 			+ "group by desc_periodo order by 2 desc; ";
@@ -593,6 +602,8 @@ public List<Atividade> getPercentPeriodoAtiv(String atividade){
 	try{
 		stmt = conexao.prepareStatement(sql);
 		stmt.setString(1, atividade);
+		stmt.setString(2, atividade);
+		stmt.setString(3, atividade);
 		rs = stmt.executeQuery();
 
 		while(rs.next()){
@@ -600,6 +611,7 @@ public List<Atividade> getPercentPeriodoAtiv(String atividade){
 			
 			url.setDesc_periodo(rs.getString("desc_periodo"));
 			url.setPercentual(rs.getFloat("percent"));
+			url.setTotal_atividades(rs.getLong("total"));
 			
 			lista_url.add(url);
 		}
@@ -925,7 +937,8 @@ public List<Atividade> getAtivGenero(){
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
-	String sql = "select count(*) as total, genero from fitrank.atividades group by genero order by count(*) desc";
+	String sql = "select count(*) as total, genero, round(count(*) / (select count(a.id_atividade_fitrank) from atividades a) * 100, 2) as percent"
+			+ " from fitrank.atividades group by genero order by count(*) desc";
 
 	try{
 		stmt = conexao.prepareStatement(sql);
@@ -936,6 +949,7 @@ public List<Atividade> getAtivGenero(){
 			
 			url.setTotal_atividades(rs.getLong("total"));
 			url.setGenero(rs.getString("genero"));
+			url.setPercentual(rs.getFloat("percent"));
 			lista_url.add(url);
 		}
 

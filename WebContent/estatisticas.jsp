@@ -46,6 +46,7 @@ color: black;
 							<th>Posição</th>
 							<th>Aplicativo</th>
 							<th>Total de Atividades</th>
+							<th>Percentual</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -55,6 +56,7 @@ color: black;
 							<td><%=i+"º" %></td>
 							<td>${lista.nome_app}</td>
 							<td>${lista.total_atividades}</td>
+							<td>${lista.percentual}%</td>
 						<tr>
 						<% i++; %>
 					</c:forEach>
@@ -72,6 +74,7 @@ color: black;
 							<th>Posição</th>
 							<th>Gênero</th>
 							<th>Total</th>
+							<th>Percentual</th>
 							
 						</tr>
 					</thead>
@@ -82,6 +85,7 @@ color: black;
 							<td><%=i3+"º" %></td>
 							<td>${lista.genero}</td>
 							<td>${lista.total_atividades}</td>
+							<td>${lista.percentual}%</td>
 						<tr>
 						<% i3++; %>
 					</c:forEach>

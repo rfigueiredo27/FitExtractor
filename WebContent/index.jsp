@@ -47,6 +47,11 @@ color: black;
 						<jsp:useBean id="total"	class="br.cefetrj.fitextractor.dao.ListarDao" />
 						<c:set var="items" value="${total.getTotal()}" />
 						<c:forEach var="lista" items="${items}"><strong>${lista.total_atividades}</strong></c:forEach>
+					</h4>
+					<h4>Data da última extração:
+						<jsp:useBean id="insercao"	class="br.cefetrj.fitextractor.dao.ListarDao" />
+						<c:set var="items" value="${insercao.getUltimaData()}" />
+						<c:forEach var="lista" items="${items}"><strong>${lista.ultima_data}</strong></c:forEach>
 					</h4>		
 				</div>
 			</div>

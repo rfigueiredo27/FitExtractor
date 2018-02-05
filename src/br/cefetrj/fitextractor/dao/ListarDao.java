@@ -204,7 +204,7 @@ public List<Atividade> getUltimaData(){
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select max(data_insercao) as ultima_data from fitrank.atividades ";
+		String sql = "select max(DATE_FORMAT(data_insercao, '%d/%m/%Y %H:%i:%s'))as ultima_data from fitrank.atividades ";
 
 		try{
 			stmt = conexao.prepareStatement(sql);
@@ -364,7 +364,7 @@ public List<Atividade> getAtividades(){
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
-	String sql = "select distinct desc_atividade from fitrank.atividades order by nome_app ";
+	String sql = "select distinct desc_atividade from fitrank.atividades ";
 
 	try{
 		stmt = conexao.prepareStatement(sql);

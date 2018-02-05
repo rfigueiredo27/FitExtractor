@@ -71,9 +71,10 @@ color: black;
 			<div class="col-sm-6">
 				<h1 align="center" style="color: black; font-weight: 400;">Análises Estatísticas</h1>
 				<div class="text-center carousel-inner center-block">
-					<h1 class="center">
-							<a class="btn btn-primary btn-lg" href="estatisticas.jsp"><h1 style="color: white;">Acessar dados</h1></a>
-					</h1>
+					<h3 class="center">
+							<a class="btn btn-primary" href="estatisticas.jsp"><h3 style="color: white;">dados individuais</h3></a>
+							<a class="btn btn-info" href="aglomerados.jsp"><h3 style="color: white;">dados aglomerados</h3></a>
+					</h3>
 				</div>
 			</div>
 			<div class="col-sm-6">

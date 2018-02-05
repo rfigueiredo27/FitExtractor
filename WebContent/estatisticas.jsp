@@ -101,6 +101,7 @@ color: black;
 						<tr>
 							<th>Posição</th>
 							<th>Faixa Etária</th>
+							<th>Total</th>
 							<th>Percentual (%)</th>
 						</tr>
 					</thead>
@@ -110,6 +111,7 @@ color: black;
 						<tr>
 							<td><%=i4+"º" %></td>
 							<td>${lista.faixa_etaria}</td>
+							<td>${lista.total_atividades}</td>
 							<td>${lista.percentual}%</td>
 						<tr>
 						<% i4++; %>
@@ -119,7 +121,7 @@ color: black;
 				</div>
 				<hr class="my-4">
 				<div class="col-sm-12">
-				<h3> <strong>Percentual de Atividades, divididos em Faixa Etária e separados por Modalidade </strong></h3>
+				<h3> <strong>Atividades, divididos em Faixa Etária e separados por Modalidade </strong></h3>
 				</div>
 				<div class="col-sm-4">
 				<h3>Corrida</h3>
@@ -130,6 +132,7 @@ color: black;
 						<tr>
 							<th>Posição</th>
 							<th>Faixa Etária</th>
+							<th>Total</th>
 							<th>Percentual (%)</th>
 						</tr>
 					</thead>
@@ -139,6 +142,7 @@ color: black;
 						<tr>
 							<td><%=i5+"º" %></td>
 							<td>${lista.faixa_etaria}</td>
+							<td>${lista.total_atividades}</td>
 							<td>${lista.percentual}%</td>
 						<tr>
 						<% i5++; %>
@@ -155,6 +159,7 @@ color: black;
 						<tr>
 							<th>Posição</th>
 							<th>Faixa Etária</th>
+							<th>Total</th>
 							<th>Percentual (%)</th>
 						</tr>
 					</thead>
@@ -164,6 +169,7 @@ color: black;
 						<tr>
 							<td><%=i6+"º" %></td>
 							<td>${lista.faixa_etaria}</td>
+							<td>${lista.total_atividades}</td>
 							<td>${lista.percentual}%</td>
 						<tr>
 						<% i6++; %>
@@ -180,6 +186,7 @@ color: black;
 						<tr>
 							<th>Posição</th>
 							<th>Faixa Etária</th>
+							<th>Total</th>
 							<th>Percentual (%)</th>
 						</tr>
 					</thead>
@@ -189,6 +196,7 @@ color: black;
 						<tr>
 							<td><%=i7+"º" %></td>
 							<td>${lista.faixa_etaria}</td>
+							<td>${lista.total_atividades}</td>
 							<td>${lista.percentual}%</td>
 						<tr>
 						<% i7++; %>
@@ -197,7 +205,7 @@ color: black;
 				</table>
 				</div>
 				<div class="col-sm-12">
-				<h3><strong>Percentual de Atividades por Faixa Etária e Modalidade quando o Gênero for Feminino</strong></h3>
+				<h3><strong>Atividades por Faixa Etária e Modalidade quando o Gênero for Feminino</strong></h3>
 				</div>
 				<div class="col-sm-4">
 				<h3>Corrida</h3>
@@ -208,6 +216,7 @@ color: black;
 						<tr>
 							<th>Posição</th>
 							<th>Faixa Etária</th>
+							<th>Total</th>
 							<th>Percentual (%)</th>
 						</tr>
 					</thead>
@@ -217,6 +226,7 @@ color: black;
 						<tr>
 							<td><%=i8+"º" %></td>
 							<td>${lista.faixa_etaria}</td>
+							<td>${lista.total_atividades}</td>
 							<td>${lista.percentual}%</td>
 						<tr>
 						<% i8++; %>
@@ -233,6 +243,7 @@ color: black;
 						<tr>
 							<th>Posição</th>
 							<th>Faixa Etária</th>
+							<th>Total</th>
 							<th>Percentual (%)</th>
 						</tr>
 					</thead>
@@ -242,6 +253,7 @@ color: black;
 						<tr>
 							<td><%=i9+"º" %></td>
 							<td>${lista.faixa_etaria}</td>
+							<td>${lista.total_atividades}</td>
 							<td>${lista.percentual}%</td>
 						<tr>
 						<% i9++; %>
@@ -258,6 +270,7 @@ color: black;
 						<tr>
 							<th>Posição</th>
 							<th>Faixa Etária</th>
+							<th>Total</th>
 							<th>Percentual (%)</th>
 						</tr>
 					</thead>
@@ -267,6 +280,7 @@ color: black;
 						<tr>
 							<td><%=i10+"º" %></td>
 							<td>${lista.faixa_etaria}</td>
+							<td>${lista.total_atividades}</td>
 							<td>${lista.percentual}%</td>
 						<tr>
 						<% i10++; %>
@@ -275,7 +289,7 @@ color: black;
 				</table>
 				</div>
 				<div class="col-sm-12">
-				<h3><strong>Percentual de Atividades por Faixa Etária e Modalidade quando o Gênero for Masculino</strong></h3>
+				<h3><strong>Atividades por Faixa Etária e Modalidade quando o Gênero for Masculino</strong></h3>
 				</div>
 				<div class="col-sm-4">
 				<h3>Corrida</h3>
@@ -286,6 +300,7 @@ color: black;
 						<tr>
 							<th>Posição</th>
 							<th>Faixa Etária</th>
+							<th>Total</th>
 							<th>Percentual (%)</th>
 						</tr>
 					</thead>
@@ -295,6 +310,7 @@ color: black;
 						<tr>
 							<td><%=i11+"º" %></td>
 							<td>${lista.faixa_etaria}</td>
+							<td>${lista.total_atividades}</td>
 							<td>${lista.percentual}%</td>
 						<tr>
 						<% i11++; %>
@@ -311,6 +327,7 @@ color: black;
 						<tr>
 							<th>Posição</th>
 							<th>Faixa Etária</th>
+							<th>Total</th>
 							<th>Percentual (%)</th>
 						</tr>
 					</thead>
@@ -320,6 +337,7 @@ color: black;
 						<tr>
 							<td><%=i12+"º" %></td>
 							<td>${lista.faixa_etaria}</td>
+							<td>${lista.total_atividades}</td>
 							<td>${lista.percentual}%</td>
 						<tr>
 						<% i12++; %>
@@ -336,6 +354,7 @@ color: black;
 						<tr>
 							<th>Posição</th>
 							<th>Faixa Etária</th>
+							<th>Total</th>
 							<th>Percentual (%)</th>
 						</tr>
 					</thead>
@@ -345,6 +364,7 @@ color: black;
 						<tr>
 							<td><%=i13+"º" %></td>
 							<td>${lista.faixa_etaria}</td>
+							<td>${lista.total_atividades}</td>
 							<td>${lista.percentual}%</td>
 						<tr>
 						<% i13++; %>

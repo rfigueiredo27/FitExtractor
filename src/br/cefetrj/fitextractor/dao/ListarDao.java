@@ -474,7 +474,8 @@ public List<Atividade> getPercentHorario(){
 	ResultSet rs = null;
 	
 	String sql = "select substr(horario, 1, 2) as horario, round(count(*) / (select count(*) from fitrank.atividades where "
-			+ "horario is not null and horario not in ('00:00:00', '01:00:00')) * 100, 4) percent from fitrank.atividades where horario is not null "
+			+ "horario is not null and horario not in ('00:00:00', '01:00:00')) * 100, 4) percent "
+			+ "from fitrank.atividades where horario is not null "
 			+ "and horario not in ('00:00:00', '01:00:00') group by substr(horario, 1, 2) order by 2 desc; ";
 
 	try{
@@ -985,7 +986,7 @@ public List<Atividade> getAtivGenero(){
 	return (lista_url);
 	} // fim
 
-	public List<Atividade> getTotalFaixaAtiv(String desc_atividade){
+public List<Atividade> getTotalFaixaAtiv(String desc_atividade){
 	Connection conexao = new ConnectionFactory().getConnection();
 	List<Atividade> lista_url = new ArrayList<Atividade>();
 	PreparedStatement stmt = null;
@@ -993,21 +994,26 @@ public List<Atividade> getAtivGenero(){
 	
 	//System.out.println("Atividade: " +desc_atividade);
 	
-	String sql = "select faixa_etaria, "
-					+"round(count(*) / (select count(a.idade) from atividades a where a.faixa_etaria is not null and a.desc_atividade = ?) * 100, 1) as percentual_total "
-					+"from atividades where faixa_etaria is not null and desc_atividade = ? "
-					+"group by faixa_etaria order by percentual_total desc " ;
+	String sql = "select  faixa_etaria, "
+			+"round(count(*) / (select count(a.idade) from atividades a where a.faixa_etaria is not null and a.desc_atividade = ?) * 100, 1) as percentual_total, "
+			+"round(count(*) / (select count(*) from fitrank.atividades where faixa_etaria is not null and desc_atividade = ?) * "
+			+"(select count(*) from atividades b where b.desc_atividade = ?),0) as total "
+			+"from atividades where faixa_etaria is not null and desc_atividade = ? "
+			+"group by faixa_etaria order by 2 desc";
 
 	try{
 		stmt = conexao.prepareStatement(sql);
 		stmt.setString(1, desc_atividade);
 		stmt.setString(2, desc_atividade);
+		stmt.setString(3, desc_atividade);
+		stmt.setString(4, desc_atividade);
 		rs = stmt.executeQuery();
 
 		while(rs.next()){
 			Atividade url = new Atividade();
 			url.setPercentual(rs.getFloat("percentual_total"));
 			url.setFaixa_etaria(rs.getString("faixa_etaria"));
+			url.setTotal_atividades(rs.getLong("total"));
 			lista_url.add(url);
 		}
 
@@ -1043,17 +1049,18 @@ public List<Atividade> getAtivGenero(){
 	return (lista_url);
 	} // fim
 	
-	public List<Atividade> getTotalFaixa(){
+public List<Atividade> getTotalFaixa(){
 		Connection conexao = new ConnectionFactory().getConnection();
 		List<Atividade> lista_url = new ArrayList<Atividade>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
 		String sql = "select  faixa_etaria, "
-					+"	round(count(*) / (select count(a.idade) from atividades a where a.faixa_etaria is not null) * 100, 1) as percentual_total "
-					+"	from atividades where faixa_etaria is not null "
-					+"	group by faixa_etaria "
-					+"  order by faixa_etaria desc";
+				+"round(count(*) / (select count(a.idade) from atividades a where a.faixa_etaria is not null) * 100, 1) as percentual_total, "
+				+"round(count(*) / (select count(*) from fitrank.atividades where faixa_etaria is not null) * "
+				+"(select count(*) from atividades b),0) as total "
+				+"from atividades where faixa_etaria is not null "
+				+"group by faixa_etaria order by 2 desc";
 
 		try{
 			stmt = conexao.prepareStatement(sql);
@@ -1063,6 +1070,7 @@ public List<Atividade> getAtivGenero(){
 				Atividade url = new Atividade();
 				url.setPercentual(rs.getFloat("percentual_total"));
 				url.setFaixa_etaria(rs.getString("faixa_etaria"));
+				url.setTotal_atividades(rs.getLong("total"));
 				lista_url.add(url);
 			}
 
@@ -1098,8 +1106,7 @@ public List<Atividade> getAtivGenero(){
 		return (lista_url);
 		} // fim
 	
-	
-	public List<Atividade> getTotalFaixaGeneroAtiv(String desc_atividade, String genero){
+public List<Atividade> getTotalFaixaGeneroAtiv(String desc_atividade, String genero){
 		Connection conexao = new ConnectionFactory().getConnection();
 		List<Atividade> lista_url = new ArrayList<Atividade>();
 		PreparedStatement stmt = null;
@@ -1109,9 +1116,14 @@ public List<Atividade> getAtivGenero(){
 		
 		String sql = "select faixa_etaria, "
 						+"round(count(*) / (select count(a.idade) from atividades a where a.faixa_etaria is "
-						+ "not null and a.desc_atividade = ? and a.genero = ?) * 100, 1) as percentual_total "
+						+ "not null and a.desc_atividade = ? and a.genero = ?) * 100, 1) as percentual_total, "
+						
+						+"round(count(*) / (select count(*) from fitrank.atividades where faixa_etaria is "
+						+" not null and desc_atividade = ? and genero = ?) * "
+						+"(select count(*) from atividades b where b.desc_atividade = ?),0) as total "
+						
 						+"from atividades where faixa_etaria is not null and desc_atividade = ? and genero = ? "
-						+"group by faixa_etaria order by percentual_total desc";
+						+"group by faixa_etaria order by 2 desc";
 
 		try{
 			stmt = conexao.prepareStatement(sql);
@@ -1119,12 +1131,16 @@ public List<Atividade> getAtivGenero(){
 			stmt.setString(2, genero);
 			stmt.setString(3, desc_atividade);
 			stmt.setString(4, genero);
+			stmt.setString(5, desc_atividade);
+			stmt.setString(6, desc_atividade);
+			stmt.setString(7, genero);
 			rs = stmt.executeQuery();
 
 			while(rs.next()){
 				Atividade url = new Atividade();
 				url.setPercentual(rs.getFloat("percentual_total"));
 				url.setFaixa_etaria(rs.getString("faixa_etaria"));
+				url.setTotal_atividades(rs.getLong("total"));
 				lista_url.add(url);
 			}
 
@@ -1159,7 +1175,7 @@ public List<Atividade> getAtivGenero(){
 		return (lista_url);
 		} // fim
 		
-	public List<Atividade> getParametrosFaixa(){
+public List<Atividade> getParametrosFaixa(){
 		Connection conexao = new ConnectionFactory().getConnection();
 		List<Atividade> lista_url = new ArrayList<Atividade>();
 		PreparedStatement stmt = null;
@@ -1222,7 +1238,7 @@ public List<Atividade> getAtivGenero(){
 		return (lista_url);
 		} // fim
 	
-	public List<Atividade> getParametrosGenero(){
+public List<Atividade> getParametrosGenero(){
 		Connection conexao = new ConnectionFactory().getConnection();
 		List<Atividade> lista_url = new ArrayList<Atividade>();
 		PreparedStatement stmt = null;
@@ -1285,6 +1301,71 @@ public List<Atividade> getAtivGenero(){
 		return (lista_url);
 		} // fim
 	
+public List<Atividade> getParametrosAglomerados(){
+	Connection conexao = new ConnectionFactory().getConnection();
+	List<Atividade> lista_url = new ArrayList<Atividade>();
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+	String faixa = "";
+	
+	String sql = "select genero, faixa_etaria, desc_atividade, desc_periodo, "
+				+"round(count(*) / (select count(desc_periodo) from fitrank.atividades "
+				+"where horario is not null and horario not in ('00:00:00', '01:00:00') and faixa_etaria is not null) * 100, 2) percent, "
+				+"round((count(*) / (select count(desc_periodo) from fitrank.atividades "
+				+"where horario is not null and horario not in ('00:00:00', '01:00:00') and faixa_etaria is not null)) * "
+				+"(select count(*) from atividades b),0) as total "
+				+"from fitrank.atividades where horario is not null and horario not in ('00:00:00', '01:00:00') and faixa_etaria is not null "
+				+"group by genero, faixa_etaria, desc_atividade, desc_periodo ";
+
+	try{
+		stmt = conexao.prepareStatement(sql);
+		rs = stmt.executeQuery();
+
+		while(rs.next()){
+			Atividade url = new Atividade();
+			url.setGenero(rs.getString("genero"));
+			//faixa = rs.getString("faixa_etaria");
+			url.setFaixa_etaria(rs.getString("faixa_etaria"));
+			url.setDesc_atividade(rs.getString("desc_atividade"));
+			url.setDesc_periodo(rs.getString("desc_periodo"));
+			url.setPercentual(rs.getFloat("percent"));
+			url.setTotal_atividades(rs.getLong("total"));
+			lista_url.add(url);
+			//System.out.println(rs.getString("genero"));
+		}
+
+	}catch(SQLException e){
+		e.printStackTrace();
+	}finally{
+		try{
+			if(rs!=null){
+				rs.close();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null){
+					stmt.close();
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(conexao!=null){
+						conexao.close();
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+
+	return (lista_url);
+	} // fim
+
 
 //	public static void main(String[] args) {
 //		ListarDao dao = new ListarDao();

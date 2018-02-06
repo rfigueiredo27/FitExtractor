@@ -377,13 +377,18 @@ color: black;
 				</div>
 			<hr>
 		</div>
+		<br>
+		<hr>
+		<br>
 		<div class="row">
-			<h3>Dados Agrupados na seguinte ordem: Gênero >> Faixa Etária >> Modalidade >> Período</h3>
+			<center>
+			<h3><strong>Dados Agrupados na seguinte ordem: Gênero >> Faixa Etária >> Modalidade >> Período</strong></h3>
 			<p>Leva-se em consideração o horário em que a atividade é <strong>iniciada</strong> nos períodos a seguir:</p>
 			<h4>Manhã: 06:00 - 11:59</h4>
 			<h4>Tarde: 12:00 - 17:59</h4>
 			<h4>Noite: 18:00 - 23:59</h4>
 			<h4>Madrugada: 00:00 - 05:59</h4>
+			</center>
 			<br>
 			<div class="dataTables_wrapper">
 				<div style="float: left;">

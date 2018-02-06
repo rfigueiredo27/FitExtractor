@@ -75,12 +75,12 @@ function filterColumn ( i ) {
 $(document).ready(function() {
     $('#tabela1').DataTable();
  
-    $('input.global_filter').on( 'keyup click', function () {
+    $('select.global_filter').on( 'keyup click', function () {
         filterGlobal();
     } );
     
  
-    $('input.column_filter').on( 'keyup click', function () {
+    $('select.column_filter').on( 'keyup click', function () {
         filterColumn( $(this).parents('tr').attr('data-column') );
     } );
     
@@ -108,11 +108,11 @@ function filterColumn2 ( i ) {
 $(document).ready(function() {
     $('#tabela2').DataTable();
  
-    $('input.global_filter2').on( 'keyup click', function () {
+    $('select.global_filter2').on( 'keyup click', function () {
     	filterGlobal2();
     } );
  
-    $('input.column_filter2').on( 'keyup click', function () {
+    $('select.column_filter2').on( 'keyup click', function () {
         filterColumn2( $(this).parents('tr').attr('data-column') );
     } );
 } );
@@ -161,8 +161,14 @@ color: black;
 					<table class="tableIndexLista table-striped table-hover">
 						<tr id="filter_col1" data-column="0">
 							<td align="right"><b>&nbsp&nbsp Genero:</b></td>
-							<td align="left"><input type="search" class="column_filter"
-								id="col0_filter"></td>
+							<td align="left">
+							<select class="column_filter"
+								id="col0_filter">
+								<option value="">Todos</option>
+								<option value="F">Feminino</option>
+								<option value="M">Masculino</option>
+							</select>
+							</td>
 						</tr>
 					</table>
 				</div>
@@ -170,8 +176,15 @@ color: black;
 					<table class="tableIndexLista table-striped table-hover">
 						<tr id="filter_col2" data-column="1">
 							<td align="right"><b>&nbsp&nbsp Modalidade:</b></td>
-							<td align="left"><input type="search" class="column_filter"
-								id="col1_filter"></td>
+							<td align="left">
+							<select class="column_filter"
+								id="col1_filter">
+								<option value="">Todas</option>
+								<option value="CAMINHADA">CAMINHADA</option>
+								<option value="CORRIDA">CORRIDA</option>
+								<option value="CICLISMO">CICLISMO</option>
+							</select>
+							</td>
 						</tr>
 					</table>
 				</div>
@@ -225,7 +238,14 @@ color: black;
 					<table class="tableIndexLista table-striped table-hover">
 						<tr id="filter_col3" data-column="0">
 							<td align="right"><b>&nbsp&nbsp Faixa Etária:</b></td>
-							<td align="left"><input type="search" class="column_filter2" id="col20_filter"></td>
+							<td align="left">
+							<select class="column_filter2" id="col20_filter">
+								<option value="">Todas</option>
+								<option value="0-30">0-30</option>
+								<option value="31-50">31-50</option>
+								<option value="51 ou mais">51 ou mais</option>
+							</select>
+							</td>
 						</tr>
 					</table>
 				</div>
@@ -233,7 +253,14 @@ color: black;
 					<table class="tableIndexLista table-striped table-hover">
 						<tr id="filter_col4" data-column="1">
 							<td align="right"><b>&nbsp&nbsp Modalidade:</b></td>
-							<td align="left"><input type="search" class="column_filter2" id="col21_filter"></td>
+							<td align="left">
+							<select class="column_filter2" id="col21_filter">
+								<option value="">Todas</option>
+								<option value="CORRIDA">CORRIDA</option>
+								<option value="CICLISMO">CICLISMO</option>
+								<option value="CAMINHADA">CAMINHADA</option>
+							</select>
+							</td>
 						</tr>
 					</table>
 				</div>

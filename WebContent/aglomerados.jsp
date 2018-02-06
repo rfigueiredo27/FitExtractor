@@ -46,8 +46,6 @@ $(document)
 						"order": [[ 0, "desc" ]],
 
 					});
-			$( "#load" ).remove();
-			$( "#conteudo" ).toggleClass( "aparece" );
 			
 		});
 
@@ -75,12 +73,12 @@ function filterColumn ( i ) {
 $(document).ready(function() {
     $('#tabela1').DataTable();
  
-    $('input.global_filter').on( 'keyup click', function () {
+    $('select.global_filter').on( 'keyup click', function () {
         filterGlobal();
     } );
     
  
-    $('input.column_filter').on( 'keyup click', function () {
+    $('select.column_filter').on( 'keyup click', function () {
         filterColumn( $(this).parents('tr').attr('data-column') );
     } );
     
@@ -132,22 +130,18 @@ $(document).ready(function() {
 h1, h1, h2, h4, h5, body{
 color: black;
 }
-
-.esconde{
-	
-	visibility: hidden;
-}
-.aparece{
-
-	visibility: visible;
-}
 </style>
 </head>
 <body>
-	<div id="load"><center><img src="images/loader.gif"></center></div>
+	
 	<div class="container esconde" id="conteudo" >
 		<div class="row">
 			<h2>Análise Estatística de Dados Aglomerados</h2>
+			<p>Leva-se em consideração o horário em que a atividade é <strong>iniciada</strong> nos períodos a seguir:</p>
+			<h4>Manhã: 06:00 - 11:59</h4>
+			<h4>Tarde: 12:00 - 17:59</h4>
+			<h4>Noite: 18:00 - 23:59</h4>
+			<h4>Madrugada: 00:00 - 05:59</h4>
 			<br>
 			<div class="dataTables_wrapper">
 				<div style="float: left;">
@@ -159,8 +153,14 @@ color: black;
 					<table class="tableIndexLista table-striped table-hover">
 						<tr id="filter_col1" data-column="0">
 							<td align="right"><b>&nbsp&nbsp Genero:</b></td>
-							<td align="left"><input type="search" class="column_filter"
-								id="col0_filter"></td>
+							<td align="left">
+							<select class="column_filter"
+								id="col0_filter">
+								<option value="">Todos</option>
+								<option value="F">Feminino</option>
+								<option value="M">Masculino</option>
+							 </select>	
+							</td>
 						</tr>
 					</table>
 				</div>
@@ -168,8 +168,16 @@ color: black;
 					<table class="tableIndexLista table-striped table-hover">
 						<tr id="filter_col2" data-column="1">
 							<td align="right"><b>&nbsp&nbsp Faixa Etária:</b></td>
-							<td align="left"><input type="search" class="column_filter"
-								id="col1_filter"></td>
+							<td align="left">
+							<select class="column_filter"
+								id="col1_filter">
+								<option value="">Todas</option>
+								<option value="0-30">0-30</option>
+								<option value="31-50">31-50</option>
+								<option value="51 ou mais">51 ou mais</option>
+							</select>
+							</td>
+								
 						</tr>
 					</table>
 				</div>
@@ -178,8 +186,15 @@ color: black;
 					<table class="tableIndexLista table-striped table-hover">
 						<tr id="filter_col3" data-column="2">
 							<td align="right"><b>&nbsp&nbsp Modalidade:</b></td>
-							<td align="left"><input type="search" class="column_filter"
-								id="col2_filter"></td>
+							<td align="left">
+							<select class="column_filter"
+								id="col2_filter">
+								<option value="">Todas</option>
+								<option value="CAMINHADA">CAMINHADA</option>
+								<option value="CICLISMO">CICLISMO</option>
+								<option value="CORRIDA">CORRIDA</option>
+							</select>		
+							</td>
 						</tr>
 					</table>
 				</div>
@@ -188,8 +203,16 @@ color: black;
 					<table class="tableIndexLista table-striped table-hover">
 						<tr id="filter_col4" data-column="3">
 							<td align="right"><b>&nbsp&nbsp Periodo:</b></td>
-							<td align="left"><input type="search" class="column_filter"
-								id="col3_filter"></td>
+							<td align="left">
+							<select class="column_filter"
+								id="col3_filter">
+								<option value="">Todos</option>
+								<option value="MANHÃ">MANHÃ</option>
+								<option value="TARDE">TARDE</option>
+								<option value="NOITE">NOITE</option>
+								<option value="MADRUGADA">MADRUGADA</option>
+							</select>
+							</td>
 						</tr>
 					</table>
 				</div>
